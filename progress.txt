@@ -2,3 +2,10 @@
 Day 0:
 - Created the repository
 - Edited readme. That's it. Not much done on the first day as I'm tired and sleep deprived. Hopefully with a good night's sleep I will be able to make some actual progress tomorrow.
+
+Day 1:
+- Looks like this intro part is similar to the HTML CSS portion taught in the python course, I think the videos are reused as well
+- How the internet works, how websites work, how to make the best use of this course
+- HTML basics, why it is hypertext, why markup.
+- The heading element and the paragraph element.
+- Already midnight so will leave HTML unfinished, to continue tomorrow.
