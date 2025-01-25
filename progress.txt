@@ -9,3 +9,10 @@ Day 1:
 - HTML basics, why it is hypertext, why markup.
 - The heading element and the paragraph element.
 - Already midnight so will leave HTML unfinished, to continue tomorrow.
+
+Day 2:
+- Void elements: br and hr
+- List Elements: ul and ol, Nesting and Indentation of elements
+- Anchor tag, hyperlinks and HTML Attributes
+- Image tag and alt text
+- File paths: Absolute and Relative(used more often)

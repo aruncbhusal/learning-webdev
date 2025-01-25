@@ -1,0 +1,36 @@
+<!-- We can nest html elements inside each other
+ In this task our goal is to replicate the nested structure given in the goal picture
+ We will nest lists inside lists, and to make the nesting clear we will indent the code
+ Without indentation the position and nesting becomes ambiguous, which is not desired -->
+
+<ul>
+    <li>A</li>
+    <li>
+        B
+        <ol>
+            <li>B1</li>
+            <li>
+                B2
+                <ul>
+                    <li>
+                        B2a
+                        <ul>
+                            <li>B2aa</li>
+                            <li>B2ab</li>
+                        </ul>
+                    </li>
+                    <li>B2b</li>
+                    <li>B2c</li>
+                </ul>
+            </li>
+            <li>
+                B3
+                <ol>
+                    <li>B31</li>
+                    <li>B32</li>
+                </ol>
+            </li>
+        </ol>
+    </li>
+    <li>C</li>
+</ul>
