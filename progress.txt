@@ -16,3 +16,9 @@ Day 2:
 - Anchor tag, hyperlinks and HTML Attributes
 - Image tag and alt text
 - File paths: Absolute and Relative(used more often)
+
+Day 3:
+- Multipage websites
+- The HTML Boilerplate
+- Hosting a website on github pages
+- Cascading Style Sheets(CSS) and different ways to add it to a webpage
