@@ -1,0 +1,33 @@
+ol {
+  margin-left: -40px;
+  margin-top: -20px;
+  list-style-position: inside;
+}
+
+/* Write your CSS below, don't change the rules above. */
+
+
+/* TODO 1: Element Selector: Select all the elements with p tag */
+p {
+  color: red;
+}
+
+/* TODO 2: Class Selector: Select elements with class "note" */
+.note {
+  font-size: 20px;
+}
+
+/* TODO 3: ID Selector: Select elements with ID "id-selector-demo" */
+#id-selector-demo {
+  color: green;
+}
+
+/* TODO 4: Attribute Selector: All li elements with value=4 to be selected */
+li[value="4"] {
+  color: blue;
+}
+
+/* TODO 5: Universal Selector: All elements to be aligned at center */
+* {
+  text-align: center;
+}

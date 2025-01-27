@@ -1,0 +1,50 @@
+<!--I did not write this file, I only wrote the comments-->
+
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Font-Size</title>
+    <style>
+        #pixel {
+            font-size: 20px;
+        }
+        /* We can use the pixel unit to specify a fixed size (static size) for the text */
+
+        #point {
+            font-size: 20pt;
+        }
+        /* The point is also a static unit but it is not used as frequently. Used in MsWord */
+
+        #em {
+            font-size: 1em;
+        }
+        /* The size of the text is relative to its immediate parent's font size
+    Since this can cause confusing code and usually harder to debug, it is mostly avoided */
+
+        #rem {
+            font-size: 1rem;
+        }
+        /* A relative size like em, it is relative to the root element(usually HTML element)
+    This allows for the website to be flexible, while being less prone to accidental breaking */
+
+        footer {
+            font-size: 12pt;
+        }
+
+        html {
+            font-size: xx-large;
+        }
+        /* We can also specify font sizes by these named sizes, but they are not used very commonly */
+    </style>
+</head>
+<html lang="en">
+    <body>
+        <p id="pixel">1 Pixel is 1/96 of an Inch</p>
+        <p id="point">1 Point is 1/72 of an Inch</p>
+        <footer>
+            <p id="em">1em is 100% the size of the parent element</p>
+            <p id="rem">1rem is 100% the size of the root element</p>
+        </footer>
+    </body>
+</html>

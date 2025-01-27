@@ -1,0 +1,30 @@
+/* I had to make the css file, and since it was already linked, I can just start writing here
+I have left the index file as it was given, and eveyrthing will be done here */
+
+/* TODO 2: Match each color title with respective color, with the help of ID */
+#red {
+    color: red;
+}
+#blue {
+    color: blue;
+}
+#orange {
+    color: orange;
+}
+#green {
+    color: green;
+}
+#yellow{
+    color: yellow;
+}
+
+/* TODO 3: All color titles must have font weight normal */
+.color-title {
+    font-weight: normal;
+}
+
+/* TODO 4: The images should have a height and width of 200px */
+img {
+    height: 200px;
+    width: 200px;
+}
