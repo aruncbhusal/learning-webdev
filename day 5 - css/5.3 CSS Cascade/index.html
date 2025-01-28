@@ -1,0 +1,42 @@
+<!--The CSS Cascade is how it got its name
+It means that the rules to be applied are the ones that come later (are down in the cascade)
+We have four levels of cascading and they all affect the application of css rules
+Each of the level has a higher priority than the one above:
+
+1. Position: If there are two or more conflicting css rules for an element, the one that comes last is the one to be applied.
+
+2. Specificity: The more specific the selector that targets an element, the higher the priority.
+On the basis of increasing specificity: Element selector -> Class selector -> Attribute selector -> ID Selector
+where ID selector is the most specific and will have the highest priority
+
+3. Type: CSS Styles can be applied in many ways, and they can be cascaded in the following order:
+(Lowest Priority) External CSS -> Internal CSS -> Inline CSS (Highest Priority)
+
+4. Importance: We can use a !important identifier after a CSS rule to make it the highest priority -->
+
+<!--Nothing in this HTML file is changed apart from these comments, the CSS has the things done-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSS Cascade</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+
+    <body>
+        <div id="outer-box" class="box">
+            <div class="box">
+                <p>Yellow Text</p>
+                <div class="box inner-box">
+                    <p class="white-text">White Text</p>
+                </div>
+            </div>
+            <div class="box">
+                <p>Yellow Text</p>
+                <div class="box inner-box">
+                    <p class="white-text">White Text</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

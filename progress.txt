@@ -22,3 +22,11 @@ Day 3:
 - The HTML Boilerplate
 - Hosting a website on github pages
 - Cascading Style Sheets(CSS) and different ways to add it to a webpage
+
+Day 4:
+- CSS Selectors
+- CSS Properties: color and font Properties
+
+Day 5:
+- CSS Box Model, Border, Padding and Margin Properties
+- The CSS Cascade and the priority of CSS Rules

@@ -1,0 +1,29 @@
+/* TODO 2: Black background and white text */
+/* TODO 4: Center aligned text */
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+/* The alignment could have been done on h1 and p individually too but I chose to do it at once*/
+
+/* TODO 5: the outer div to be centered by using the width and margin properties */
+div {
+    width: 50%;
+    margin: 0 25%;
+    margin-top: 100px;
+}
+
+/* TODO 1: styling h1 with font */
+/* TODO 6: uppercase transform */
+h1 {
+    font-family: "Libre Baskerville", sans-serif;
+    text-transform: uppercase;
+}
+
+/* TODO 3: image styling with white border */
+/* TODO 5: Set width to 100%(of parent element i.e. div) so it doesn't try to take all of the screen */
+img {
+    border: 5px solid white;
+    width: 100%;
+}

@@ -1,0 +1,112 @@
+<!--The CSS Box Model describes the structure of the HTML elements as individual boxes
+These boxes push each other and reside in the document
+The boxes can have their width and height set as per our need
+They also have different properties like border, padding and margin
+
+1. Border: When a border is set, there appears a line of chosen style outside of the element's box
+(It can be made to grow inward but we're not told that yet). The border may have width, style and color
+the width property can have 4 values which represent top->right->bottom->left in that order
+
+2. Padding: It represents the space between the element's content and the border. It can also have 4 values representing the 4 directions around the content.
+
+3. Margin: It represents the space outside of the border that is empty space around the element's border.
+It which can also be 4 directions.
+
+The goal png was successfully replicated.-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSS Box Model</title>
+        <style>
+            /* TODO 2 */
+            div {
+                height: 200px;
+                width: 200px;
+            }
+
+            /* TODO 3 */
+            #blue {
+                background-color: cadetblue;
+            }
+            #gold {
+                background-color: gold;
+            }
+            #red {
+                background-color: indianred;
+            }
+
+            /* TODO 5 */
+            #blue {
+                padding: 20px;
+                border: 10px solid black;
+            }
+            /* Single value for padding and border width means equal in all directions
+            solid here means line style, and black is the border color */
+
+            /* TODO 6 */
+            p {
+                margin: 0;
+            }
+
+            /* TODO 7 */
+            #gold {
+                border: 0px solid black;
+                border-width: 20px 10px;
+            }
+            /* Two values mean that first one is for top and bottom, second for left and right
+            In the first border rule, the width is not mandatory, though it makes no difference in result*/
+
+            /* TODO 8 */
+            #red {
+                border: 10px solid black;
+            }
+
+            /* TODO 9: This one needs some math */
+            #gold {
+                margin: 0 260px;
+            }
+            /* Logic: 200(content width)+2*20(padding)+2*10(border)*/
+            #red {
+                margin: 0 40px;
+            }
+            /* Logic: Own border is 10px so only need to move 2*20(padding) */
+            /* I could instead have used margin-left property to set left margin only */
+        </style>
+    </head>
+
+    <body>
+        <!-- TODOs:
+1. Create 3 Boxes using the div element.
+2. Set their sizes to 200px heigh by 200px wide.
+3. Set different background colors for each of the boxes (I used cadetblue, gold and indianred).
+4. Add a paragraph <p> element into the first div and add the following words:
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at sapien porttitor urna elementum lacinia. In
+    id magna pulvinar, ultricies lorem id, vehicula elit. Aliquam eu luctus nisl, vitae pellentesque magna. Phasellus
+    dolor metus, laoreet ac convallis sit amet, efficitur sed dolor.
+5. Set the 1st div to have 20px padding all around with a black 10px border.
+6. Fix the style of the <p> element to remove all margins.
+Hint: Use the CSS inspector in Chrome.
+7. Set the 2nd div to have a 20px border on top and bottom and 10px border left and right. (See goal image)
+8. Set the 3rd div to have a 10px border 
+9. Set the margins for the divs so that each box corner touches the other. (See the goal image)
+-->
+
+        <!-- TODO 1 -->
+        <div id="blue">
+            <!-- TODO 4 -->
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                at sapien porttitor urna elementum lacinia. In id magna
+                pulvinar, ultricies lorem id, vehicula elit. Aliquam eu luctus
+                nisl, vitae pellentesque magna. Phasellus dolor metus, laoreet
+                ac convallis sit amet, efficitur sed dolor.
+            </p>
+        </div>
+
+        <div id="gold"></div>
+
+        <div id="red"></div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+/* Don't change the existing CSS. */
+
+.box {
+  background-color: blue;
+  padding: 10px;
+}
+
+p {
+  color: yellow;
+  margin: 0;
+  padding: 0;
+}
+
+/* We have to make use of the cascade here so let's see */
+.inner-box {
+  background-color: red;
+}
+.white-text {
+  color: white;
+}
+/* The boxes were targeted before with above selectors as well
+But since we've placed our rules below, they are prioritized
+Also for white text, our selector has a higher specificity (class vs element) so ours is applied */
+
+#outer-box {
+  background-color: purple;
+}
+/* This is a box too, but since our selector is an ID selector, it wins the priority against class
+We already have the padding set for all elements with box class
+So it cascades into this element just fine unless we change it ourself */
