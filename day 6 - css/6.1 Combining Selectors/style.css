@@ -1,0 +1,47 @@
+/* We can combine selectors to select specific elements only
+for example we can use ".name p" to select a p element that exists inside a 'name' class element
+Here it can be any levels deep inside the class, it just must be a descendant
+
+A way to apply selectors is to group multiple selectors with a comma.
+This applies the CSS Rules to all the selected elements of both(or more) selectors */
+
+/* First we need to make the heading and subheading blueviolet */
+h1, h2 {
+    color: blueviolet;
+}
+
+/* We can combine selectors as
+selector1 > selector2 to indicate we want to select elements of selector2 only if they are direct children of selector1
+This is called "Child selector"
+Our task here is to change the first paragraph color */
+.box > .done {
+    color: firebrick;
+}
+/* There are multiple p elements and multiple elements with done class
+Even inside the box div, there are many elements with done class
+But only one is the direct child
+We could also use .box > p , or even div > p in this case. We could simply also do 'div p' and it would work fine */
+
+/* We could also use the descendent selector
+"selector1 selector2" to select ANY descendent of selector1 that is of selector2
+Like here we need to select all list items inside the box */
+.box li {
+    color: blue;
+}
+
+/* Another type of combination is called Chaining
+selector1selector2 : In this one the selectors are not separated by any spaces
+The CSS Rules are only applied when ALL the chained selectors are true for that element
+While chainaing, we put the element selector first if any, then we can put id(with #) and class(with .) in any order */
+/*In this task we have to select the list elements inside the div with the class box
+We can do: */
+li.done {
+    color: seagreen;
+}
+
+/* Finally we can also combine this combinations to make a complex selector
+For eg we need to select the paragraph with class done that is inside the ul element in the html
+We can use the following selector: */
+ul p.done {
+    font-size: 0.5rem;
+}

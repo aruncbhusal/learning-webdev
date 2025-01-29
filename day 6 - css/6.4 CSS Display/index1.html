@@ -1,0 +1,64 @@
+<!--The display property lets us modify the box that contains an element
+Most elements have a box that spans the whole width of the window, and pushes the next element below
+Some elements, like span have a box that only includes their own element, and can be placed "in line" with other elements.
+There are many values for the display property, but 3 of them are:
+1. Block: most common default value
+With this property, the element width and height may be set, but it doesn't allow any other element to be placed alongside it
+Any element before or after it must go above or below the element with display: block
+
+2. Inline: The element can be placed alongside other elements if their box allows it, or in the same line
+if placed inside another element, without taking up the whole width itself.
+Its width and height can't be changed and is always equal to the width and height of the content it contains.
+
+3. Inline-block: This is the mixture of both inline and block
+Like inline, the element can fit in the same line as other elements
+Like block, the width and height can be changed-->
+
+<!DOCTYPE html>
+<html>
+    <!-- 
+  TODO
+1. By changing only the display property of the CSS make all 3 squares line up horizontally like in goal1 image.
+2. Change only the display property to make all 3 squares line up vertically like in goal2 image. 
+-->
+
+    <head>
+        <title>CSS Display Property Example</title>
+        <style>
+            /* In this one I'll only be doing goal 1, goal 2 will be in index2
+    Since all already have width and height equal, I just need to set all of them to inline-block
+    Since we need to both have resizability and in the same line as well */
+            p {
+                color: white;
+            }
+
+            .red {
+                display: inline-block;
+                width: 200px;
+                height: 200px;
+                background-color: red;
+            }
+
+            .green {
+                display: inline-block;
+                width: 200px;
+                height: 200px;
+                background-color: green;
+            }
+
+            .blue {
+                display: inline-block;
+                width: 200px;
+                height: 200px;
+                background-color: blue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>CSS Display Property</h1>
+        <p class="red">Red Paragraph</p>
+        <p class="green">Green Paragraph</p>
+        <p class="blue">Blue Paragraph</p>
+    </body>
+</html>

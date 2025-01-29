@@ -1,0 +1,74 @@
+<!--Project time: Nothing in this page is touched, all work done inside the style tag
+I will use the hints to speed up my process-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSS Flag Project</title>
+        <style>
+            /*First let's set up the whole flag (including the outermost section)*/
+            .flag {
+                position: relative;
+                width: 900px;
+                height: 600px;
+                background-color: #ce1126;
+            }
+
+            /* Let's make the text look like our goal */
+            .flag p {
+                text-align: center;
+                font-size: 5rem;
+                margin: 0;
+            }
+            /* The margin of the p was not allowing for adherence to top of the window */
+            .flag > p {
+                color: white;
+            }
+
+            /* Now let's get the inner rectangle whose height I will need to calculate. Since we need equal height on this as the visible parts of the main flag div on both sides
+    I will need 300px height for it */
+            .flag > div {
+                position: absolute;
+                top: 150px;
+                height: 300px;
+                width: 900px;
+                background-color: #002868;
+            }
+
+            /* Now turn for the circle with some more math to align the center */
+            .flag > div > div {
+                position: absolute;
+                top: 50px;
+                left: 350px;
+                background-color: white;
+                height: 200px;
+                width: 200px;
+                border-radius: 50%;
+            }
+            /* We can use relative position here as well since it is the first child of the div
+            So its top left will also be the top left of its parent div */
+        </style>
+    </head>
+
+    <!-- 
+  IMPORTANT! Do not change any HTML
+Don't add any classes/ids/elements 
+Use what you know about combining selectors 
+and CSS specificity instead.
+Hint 1: The flag is 900px by 600px and the circle is 200px by 200px.
+Hint 2: You can use CSS inspection to get the colors from
+https://appbrewery.github.io/flag-of-laos/
+-->
+
+    <body>
+        <div class="flag">
+            <p>The Flag</p>
+            <div>
+                <div>
+                    <p>of Laos</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
