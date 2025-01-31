@@ -1,0 +1,36 @@
+<!--In media query method, we first set breakpoints for different resolutions(usually width)
+We set width because we scroll the height anyway. We first query the media (current window)
+using "@media" and all the CSS for screens that fall within the breakpoint follow rules inside it
+as well as the rules outside.-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Media Query</title>
+        <style>
+            div {
+                background-color: rebeccapurple;
+                height: 500px;
+                width: 500px;
+            }
+
+            @media (max-width: 600px) {
+                /* CSS for screens below or equal to 600px wide */
+                div {
+                    height: 200px;
+                    width: 200px;
+                }
+            }
+
+            /* In this example, as soon as we contract the window below 600px, the size of the div
+            shrinks to 200x200 from 500x500. */
+        </style>
+    </head>
+
+    <body>
+        <h1>Media Query</h1>
+        <div></div>
+    </body>
+</html>

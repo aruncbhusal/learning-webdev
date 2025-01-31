@@ -35,3 +35,10 @@ Day 6:
 - Combining selectors: Grouping, Child, Descendant, Complex selectors
 - Position property: static, relative, absolute and fixed positioning
 - Display property: block, inline and inline-block display properties
+
+Day 7: Didn't do anything as was out for the whole day
+
+Day 8:
+- CSS Float property: Wrapping elements around
+- Responsive CSS: Using media queries and breakpoints
+- display: flex and its properties: direction, basis

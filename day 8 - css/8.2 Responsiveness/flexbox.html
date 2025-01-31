@@ -1,0 +1,46 @@
+<!--Another method is flexbox where we set the display of a container element to flex
+Then for the individual elements we can set different values. The flex rule defines the width in terms of ratio
+We can specify the flex property for all elements to get the desired ratio of widths
+The flex can be made to flow horizontally(width) or vertically(height)-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS Flexbox</title>
+        <style>
+            .flex-container {
+                display: flex;
+            }
+
+            .card {
+                background: blue;
+                border: 30px solid white;
+                height: 100px;
+                flex: 1;
+            }
+
+            .first {
+                flex: 2;
+            }
+
+            .second {
+                flex: 0.5;
+            }
+
+            /* In this case, the ratio is 2:0.5:1:1:1 since all have 1 initially but the first and second were changed later
+    This lets us easily manage the layout of a webpage */
+        </style>
+    </head>
+
+    <body>
+        <h1>CSS Flexbox</h1>
+        <div class="flex-container">
+            <div class="first card"></div>
+            <div class="second card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+    </body>
+</html>

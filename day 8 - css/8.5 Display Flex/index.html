@@ -1,0 +1,54 @@
+<!--Over the years, different ways have been used to create webpage layouts
+Initially web was supposed to be a counterpart of magazines and similar design structures were followed
+The pages could be laid out with the help of HTML Tables, by putting content into the cells
+
+The different ways of setting up layout are in respective files in this folder. I didn't write any of them.
+I will comment on those I feel the need to, but the rest is given as a part of the lesson.
+But this index file is where the challenge is so I'll come back here to edit this one -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Column Layout Methods</title>
+  <style>
+    p {
+      padding: 0;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    .container {
+      padding: 10px;
+      background-color: gold;
+    }
+
+    /* My task begins here. I need to make a navbar like appearance, like the goal image
+    We'll be using a couple lines of flex simply */
+    .container {
+      display: flex;
+      gap: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <p>Page Layout Methods</p>
+
+    <li><a href="./html-table.html">HTML Table</a></li>
+    <li><a href="./inline-block.html">Inline-Block</li>
+    <li><a href="./absolute-position.html">Absolute Positioning</li>
+    <li><a href="./float.html">Float</li>
+    <li><a href="./flex.html">Flexbox</li>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!--We can use display:grid to set a layout for a page.
+The container element should have display property set to grid, and then we can set up templates
+The width of each constituent element in each column can be fixed using units like fraction(fr) or px..
+The height of each row can also be fixed using grid-template-rows property similarly
+
+Then for each element, we can further customize it by allowing an element to span across multiple spots
+This can be done using grid-column property -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS Grid</title>
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 100px 200px 200px;
+                gap: 30px;
+            }
+
+            .first {
+                grid-column: span 2;
+            }
+
+            .card {
+                background-color: blue;
+            }
+
+            /* In this case we first set up two columns of equal width (both an equal fraction of the available width)
+    Then we set up three columns with different heights
+    For the first element, we set it to span across two columns, and the rest are arranged in the defined grid
+    And thus the required layout is obtained. */
+        </style>
+    </head>
+
+    <body>
+        <h1>CSS Grid</h1>
+        <div class="grid-container">
+            <div class="first card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+    </body>
+</html>

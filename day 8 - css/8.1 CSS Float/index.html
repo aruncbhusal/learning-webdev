@@ -1,0 +1,91 @@
+<!--The CSS float property is used when we want to fix something to a side of the page (usually image)
+and wrap some other elements around it, not necessarily to a fixed location but around it anyhow.
+This can be done with left or right float property, and it will try to float everything that way
+But this can have unintended effects on the later elements that we don't want to wrap around
+Since the float property is applied to the fixed element(usually img), we need to clear it later
+when we don't want that to affect some other element, we set the clear left, right or both on the element
+
+We need to make the page look similar to the goal picture, and I'll not edit the HTML part at all-->
+
+<!--A point to note is that we don't use float to make layouts nowadays
+We have better tools for that, like flexbox, grid, so we mostly use float to just wrap text around images-->
+<!DOCTYPE html>
+<html lang="en">
+    <!-- TODO
+1. Make both paragraph elements wrap around the image.
+2. Use Float to move the cat div to the left and the dog div to the right.
+3. Use clear to make the footer go below both the cat and dog div. -->
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSS Float</title>
+        <style>
+            div {
+                display: inline-block;
+                width: 40%;
+            }
+
+            p {
+                font-size: 2em;
+            }
+
+            .cat {
+                background-color: aquamarine;
+            }
+
+            .dog {
+                background-color: coral;
+            }
+
+            footer {
+                text-align: center;
+                background-color: blueviolet;
+            }
+
+            /* Since we want both images to float left of their respective divs, we use */
+            img {
+                float: left;
+            }
+
+            /* But we also want the entire cat and dog divs to float left and right respectively */
+            .cat {
+                float: left;
+            }
+            .dog {
+                float: right;
+            }
+            /* Now the footer has floated up to the top, but we want it at the bottom
+            So we must clear its floating responsibilites */
+            footer {
+                clear: both;
+            }
+            /* Since it was bound by both the left and right floats, we had to clear both */
+        </style>
+    </head>
+
+    <body>
+        <div class="cat">
+            <h2>CatCSS</h2>
+
+            <img src="cat.jpeg" alt="cat in a box" />
+            <p class="first-paragraph">
+                Nap all day cat dog hate mouse eat string barf pillow no baths
+                hate everything but kitty poochy. Sleep on keyboard toy mouse
+                squeak roll over. Mesmerizing birds. Poop on grasses licks paws
+                destroy couch intently sniff hand. The dog smells bad gnaw.
+            </p>
+        </div>
+        <div class="dog">
+            <h2>DogCSS</h2>
+            <img src="dog.jpeg" alt="dogs in a box" />
+            <p class="second-paragraph">
+                Heckin good boys and girls long woofer big ol wow very biscit
+                long woofer heck what a nice floof, long doggo noodle horse vvv
+                very taste wow. Very taste wow many pats aqua doggo he made many
+                woofs pupperino, puggo doing me a frighten.
+            </p>
+        </div>
+
+        <footer>Copyright. This is the footer</footer>
+    </body>
+</html>

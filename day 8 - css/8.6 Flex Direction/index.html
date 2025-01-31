@@ -1,0 +1,87 @@
+<!--When using flexbox, we noticed our elements inside the flex container went from left to right
+But that is because the property flex-direction is set to "row" meaning all elements go into a row
+This is in contrast to normal HTML flow of top to bottom
+If we want to get the top to bottom flow with flex, we can use flex-direction to column
+What this does is it interchanges the main axis and the cross axis
+The main axis for a row is left to right and for a column is top to bottom
+The cross axis is just perpendicular to the main axis so just the opposite
+
+The elements flex along the main axis. So if we set a property of flex-basis to an element,
+its height/width will change, but it will only change in the direction of the main axis
+i.e. for row direction, width will change, and for column, height will change
+
+In this challenge, we need to make sure the rainbow appears in a column from top to bottom
+and we need to make sure the height of each element is set to 100px.
+Since we need to set flex basis for each element separately, we're given the docs link
+to find out the selector to use. But since I've already done this tons of times before
+I'll just do what I know-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Flex Direction</title>
+        <!-- HINT:
+  https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors
+  https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators 
+  -->
+        <style>
+            .container {
+                color: white;
+                border: 5px solid gold;
+                display: flex;
+                /* Let's first get the alignment right */
+                flex-direction: column;
+                width: max-content;
+                /* This was a part of the challenge, but I had to figure it out myself
+      It will probably be mentioned in the solution
+      Apparently, the solution was to use inline-flex instead of just flex
+      So this is a fault on my part */
+            }
+
+            /*
+Select all the elements that are the direct
+children of the .container class.
+    */
+            /* Wow the hint is already given, looks like my thinking was a waste */
+            .container > * {
+                flex-basis: 100px;
+            }
+
+            .red {
+                background-color: #eb4d4b;
+            }
+            .orange {
+                background-color: #f0932b;
+            }
+            .yellow {
+                background-color: #f6e58d;
+            }
+            .green {
+                background-color: #6ab04c;
+            }
+            .blue {
+                background-color: #4834d4;
+            }
+            .indigo {
+                background-color: #30336b;
+            }
+            .purple {
+                background-color: #be2edd;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="red">Red</div>
+            <div class="orange">Orange</div>
+            <div class="yellow">Yellow</div>
+            <div class="green">Green</div>
+            <div class="blue">Blue</div>
+            <div class="indigo">Indigo</div>
+            <div class="purple">Purple</div>
+        </div>
+    </body>
+</html>

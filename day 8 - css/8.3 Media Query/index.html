@@ -1,0 +1,64 @@
+<!--The media query (@media) can be used to ask the device of its properties so that we can adjust CSS accordingly
+The most used properties(in the case of responsiveness) are max-width and min-width
+We can use @media (max-width:xxx) to target any device whose screen width is less than xxx
+Or if we use min-width, we can target devices whose screen width is greater than the amount
+We could also combine the two methods to target devices between the given widths, or we can also target devices outside of specified range
+
+We can also use other media queries like @media screen(orientation:landscape) which allow us to set the css for orientation purposes
+But we generally don't use them, also the screen ^^^ here is just to distinguish between screen and print
+Since we may want to have a different view of the website when printing, that was an option
+But nowadays we don't really print websites, so we should generally stick to @media(...)
+
+In this lesson, I have to make the page responsive for given breakpoints. Let's follow the TODO-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <!-- 
+TODO: Change the background color for each device
+[lightsalmon] Mobile Devices: 319px — 480px
+[powderblue] iPads and Tablets: 481px — 1200px
+[limegreen] Laptops: 1201px — 1600px
+[seagreen] Desktops: 1601px and more
+-->
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, minimum-scale=1"
+        />
+        <title>Media Query</title>
+        <style>
+            body {
+                background-color: aquamarine;
+            }
+
+            /* We don't use aquamarine anywhere, so we'll just override it with media queries later */
+            @media (min-width: 319px) and (max-width: 480px) {
+                body {
+                    background-color: lightsalmon;
+                }
+            }
+            /* I could have set up max-width only but I wanted aquamaraine to show up as well */
+
+            @media (min-width: 481px) {
+                body {
+                    background-color: powderblue;
+                }
+            }
+            /* Since we're cascading, we can simply set min width increasingly this point onwards */
+            @media (min-width: 1201px) {
+                body {
+                    background-color: limegreen;
+                }
+            }
+            @media (min-width: 1601px) {
+                body {
+                    background-color: seagreen;
+                }
+            }
+        </style>
+    </head>
+
+    <body></body>
+</html>

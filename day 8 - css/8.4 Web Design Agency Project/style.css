@@ -1,0 +1,91 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 50px 50px 0 50px;
+  background-color: #faf9f6;
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+}
+.main {
+  flex: 1;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+footer {
+  text-align: right;
+  color: midnightblue;
+}
+
+/* My CSS starts here. I'm wondering whether to target desktop or the phone version first
+But let's start with desktop then add the phone version with media query */
+
+  /* This was the first thing I noticed, the font seems fine (height:50%) */
+  /* While testing responsiveness, I noticed the width was not actually 50% since part of text didn't go down until we reached 840px, as opposed to my 1500px */
+  /* The behavior led me to believe the line ALWAYS breaks after the span, regardless of the dimension*/
+  /* I had to look at the code to figure it out, but it seems they just edited the HTML so it would behave that way. I though we weren't supposed to do that */
+
+/* I had to add a span in the middle of the h1 for this but idk how it is done in the solution code*/
+h1 span {
+  color: midnightblue;
+}
+
+/* Perfect, now let's make the cards float, along with the images inside them, which are too big right now */
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.tile-image {
+  height: 200px;
+  float: left;
+  margin-right: 50px;
+}
+
+/* Now the tiles need to be equal width as well for them to float side by side */
+.card {
+  width: 45%;
+}
+
+/* Ok now the desktop version is done, testing for responsiveness, we found a few issues and had to even inspect the solution to see what was going on
+But now that it's all done, let's focus on the mobile version. The breakpoint was 680 I think */
+
+@media (max-width: 680px) {
+  /* First the logo and header size is smaller in this one */
+  .logo {
+    width: 100px;
+  }
+  h1 {
+    font-size: 3.5rem;
+    text-align: center;
+  }
+  /* Also had to align the heading center */
+
+  /* Now the cards are full width, along with the images */
+  .card {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .tile-image {
+    width: 100%;
+    margin-bottom: 10px;
+    object-fit: cover;
+  }
+  /* I wonder how they expected people to get the object-fit part right
+  I've done this before and yet I had to inspect to see if they're doing anything differently */
+
+  /* Finally the text seems to be justified */
+  .card p {
+    text-align: justify;
+  }
+}
+
+/* Okay now it looks ditto */
+
+/* Things addressed in the course solution video: the introduction of the span in the html,
+the object-fit property, for which we were urged to read up the docs
+One thing I didn't do in my code is to set display: block for the image, because since width is already 100%
+I think it's a redundancy, or maybe I'm wrong idk */
