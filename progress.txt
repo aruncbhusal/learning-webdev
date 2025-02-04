@@ -42,3 +42,5 @@ Day 8:
 - CSS Float property: Wrapping elements around
 - Responsive CSS: Using media queries and breakpoints
 - display: flex and its properties: direction, basis
+
+Day 9(2081-10-19/2025-02-01) onwards: On halt due to personal reasons.

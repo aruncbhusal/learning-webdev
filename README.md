@@ -25,5 +25,6 @@ The repository is organized as follows:
 ### Current Status
 
 -   HTML ✅
+-   CSS ⏸️
 
-**Ongoing ▶️ CSS**
+**Ongoing ▶️ hiatus**
