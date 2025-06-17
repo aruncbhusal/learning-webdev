@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Auto Size Grid</title>
+        <style>
+            /* We can also set a column width to auto, which means it will take up all the remaining space on the horizontal direction
+    The fixed width column will take up all its width, the rest will be taken by the column whose width is set to auto
+    
+    In the case of row, the height of the fixed row remains constant, but that of the auto height row will be equal to the content height.
+    
+    In this example, the first column containing 1,3 has a fixed width, but changing the screen width changes the width of column containing 2,4
+    The first row containing 1,2 is set to a fixed height, but that of 3,4 is dynamic depending on the height of the content contained inside thenm.*/
+
+            /* We can visit this site to play around: https://appbrewery.github.io/grid-sizing/*/
+            .grid-container {
+                display: grid;
+                grid-template-rows: 100px auto;
+                grid-template-columns: 200px auto;
+            }
+
+            .grid-item {
+                font-size: 3rem;
+                background-color: darkviolet;
+                border: 5px solid goldenrod;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Auto Size Grid</h1>
+        <div class="grid-container">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+        </div>
+    </body>
+</html>

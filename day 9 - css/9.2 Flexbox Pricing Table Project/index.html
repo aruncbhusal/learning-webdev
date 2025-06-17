@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Flexbox Pricing Table</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* okay so this is the challenge. The intial setup doesn't have any styling apart from the font family
+    It also has a hint that we need to use media query, but I've used these enough to know it's important.
+    The final output should look like the goal image, not included in the repo. But what i did is what it inline-size.
+    if there's any deviations from course solution, I'll make sure to point it out.*/
+    body {
+      font-family: 'Sono', sans-serif;
+    }
+
+    /* Since the media query has a max width, it means we need to take care of the larger screen size first. Let's work with the larger goal for now
+    The first thing we need to do is center the entire pricing plan container on the screen */
+    body {
+      display: flex;
+      height: 95vh; /* because it added a scrollbar when I tried 100vh */
+      justify-content: center;
+      align-items: center;
+    }
+    /* In the course solution, all this was done in the container div, not the body tag
+    I think I had jumbled it in my mind and thought it would have the same effect but it doesn't
+    I have added them to the container as well, but to see its effect, we need to comment out the above rules for body */
+
+    /* Now we need the plans to be arranged in a row instead of normal HTML view of column */
+    .pricing-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+    /* Now to style each individual plan in the way it is in the goal image */
+    .pricing-plan {
+      background-color: #f0f0f0; /* Whatever felt right */
+      padding: 20px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* Plenty of things different in my styling against the course solution
+    First, I don't set any width for these cards, and they are based on content widths
+    Next is I didn't allow for any growing or shrinking, which I can add with just a flex: 1. But then I'd have to add max-width:400 like the course
+    The rest is as I did, but instead of using flexbox inside the cards, she simply aligned all text to the center
+    I had only used flexbox because text-align center didn't work for the button. */
+
+    /* Time for the text elements to be the right size and weight */
+    .plan-title {
+      font-weight: 900;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .plan-price {
+      font-size: 3rem;
+      font-weight: 900;
+    }
+
+    /* Now to fix the list */
+    .plan-features {
+      list-style-type: none;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .plan-features>li {
+      margin-bottom: 15px;
+      /* The text looks a bit narrower than t he target but even a normal bold weight is too much
+      Plus, since the goal was taken on a mac, the emojis look washed out on my windows */
+      color: #222;
+    }
+    /*But I think the last one does look a bit more darker than the other ones, so I'll adjust color for the rest */
+    .plan-features>li:last-child{
+      color: #000;
+    }
+
+    /* Finally the last piece, the sign up button */
+    .plan-button {
+      padding: 10px;
+      color: white;
+      background-color: #f05f22;
+      border: none;
+      border-radius: 5px;
+    }
+
+    /* Hint: What can you do with a media query and flexbox? */
+    @media (max-width: 1250px) {
+      /* Now for a smaller screen, I just need to have its direction set to column */
+      .pricing-container {
+        flex-direction: column;
+        /* Course solution: height: 100%
+        Above, the height of the container was set to 100vh, here it's set to 100% so that it scales the contents well. */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pricing-container">
+    <div class="pricing-plan">
+      <div class="plan-title">Basic</div>
+      <div class="plan-price">$11.99/month</div>
+      <ul class="plan-features">
+        <li>✅ 10GB Storage</li>
+        <li>✅ 1 User</li>
+        <li>🚫 Support</li>
+      </ul>
+      <button class="plan-button">Sign Up</a>
+    </div>
+    <div class="pricing-plan">
+      <div class="plan-title">Standard</div>
+      <div class="plan-price">$19.99/month</div>
+      <ul class="plan-features">
+        <li>✅ 50GB Storage</li>
+        <li>✅ 5 Users</li>
+        <li>✅ Phone &amp; Email Support</li>
+      </ul>
+      <button class="plan-button">Sign Up</a>
+    </div>
+    <div class="pricing-plan">
+      <div class="plan-title">Premium</div>
+      <div class="plan-price">$49.99/month</div>
+      <ul class="plan-features">
+        <li>✅ 100GB Storage</li>
+        <li>✅ 10 Users</li>
+        <li>✅ 24/7 Support</li>
+      </ul>
+      <button class="plan-button">Sign Up</a>
+    </div>
+  </div>
+
+</body>
+
+</html>

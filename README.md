@@ -27,4 +27,5 @@ The repository is organized as follows:
 -   HTML ✅
 -   CSS ⏸️
 
-**Ongoing ▶️ hiatus**
+**Hiatus** since Feb 4, 2025
+**Ongoing ▶️** continued from June 17, 2025 i.e. 3/3/2082

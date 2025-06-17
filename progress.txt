@@ -43,4 +43,9 @@ Day 8:
 - Responsive CSS: Using media queries and breakpoints
 - display: flex and its properties: direction, basis
 
-Day 9(2081-10-19/2025-02-01) onwards: On halt due to personal reasons.
+Day 9* (2081-10-19/2025-02-01) onwards: On halt due to personal reasons.
+
+Day 9 (2082-03-03):
+- Flex layout: justify, align, wrap and flex sizing: grow, shrink, basis
+- display: grid and template columns and rows
+- Grid sizing, fractional units, responsive grids, minmax and repeat

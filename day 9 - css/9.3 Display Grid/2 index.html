@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chessboard</title>
+        <style>
+            /* Write your code here */
+            /* Each square should be 100px by 100px */
+            /* My colours for white: #f0d9b5, black: #b58863 */
+            .container {
+                display: grid;
+                /* I'll try to set the width and height from here
+      Since we want 100x100, I'll have this container width be 800 */
+                width: 800px;
+                height: 800px;
+                grid-template-columns: repeat(8, 1fr);
+                grid-template-rows: repeat(8, 1fr);
+                /* Looks like I still remember how it goes. This might have been taught as part of the solution
+      But this is probably what I was expected to do instead as a newbie: */
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+                /* Only having columns works too because it will just arrange everything we have into the desired format, and this is the only format we end up with. */
+            }
+            .white {
+                background-color: #f0d9b5;
+            }
+            .black {
+                background-color: #b58863;
+            }
+
+            /* Differences between my solution and course solution: 
+            1. She set the height and the width for both white and black divs as expected
+            2. She didn't use the repeat method to lay out the grid, probably will be taught in a later lesson
+            3. She set only width for the container div because the height is alreday inferred from the content i.e. boxes */
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+        </div>
+    </body>
+</html>

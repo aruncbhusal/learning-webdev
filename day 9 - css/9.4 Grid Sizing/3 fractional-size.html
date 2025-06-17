@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fractional Size Grid</title>
+        <style>
+            /* We can also use the fractional unit fr to divide the available horizontal area i.e. width of the container among the grid columns
+    Using this ensures that our design stays responsive and a ratio of size is maintained between any two columns or rows */
+
+            /* In this example, first row is double the size of the second, which means when content height of any of the rows changes, the other one changes too
+    If first row needs a larger height, second row automatically gets double of the extra height, and vice versa
+    
+    In the case of columns, it is as described before. The horizontal width here is divided into three parts, two for second column and one for the first. 
+    
+    The ratio may be any type 3:5, 7:11.5:2, all valid */
+            .grid-container {
+                display: grid;
+                grid-template-rows: 1fr 2fr;
+                grid-template-columns: 1fr 2fr;
+            }
+
+            .grid-item {
+                font-size: 3rem;
+                background-color: darkviolet;
+                border: 5px solid goldenrod;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Fractional Size Grid</h1>
+        <div class="grid-container">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+        </div>
+    </body>
+</html>

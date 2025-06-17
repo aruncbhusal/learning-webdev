@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS Grid vs Flexbox</title>
+        <style>
+            /* Grid is another way to lay out items on the screen. It is different from Flexbox in that it is used for rigid grids, not flexible boxes
+    In a grid, the rows and columns are arranged and they have a well defined boundary, they maintain the boundary and warp evenly on smaller screens
+    The difference can be thought of as flexbox being a way to arrange items in a 1D line, and grid for 2D layouts.
+    But we can create 2D layouts with flex and 1D arrangements with grid, they just act differently.
+    In practical web design, we often use both grid and flex, sometimes grid inside flex item, and sometimes flex inside grid item
+    We also combine other layout methods like float, table, etc as well, so that we can achieve a desired look. */
+
+            /* Now this is an example site for reference in the course but we can see the elements of the grid layout here
+    First, we need to set display grid, and we have to then set templates with how wide we want the grid items
+    We divide the container width into fractions, and in this example, a column is diivded into two parts, one is 1fr wide, other is 2fr so 1:2 ratio
+    The rows have a 1:1 ratio. And finally the gap is the separation between two rows/ two columns */
+            .container {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-template-rows: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .container > * {
+                background-color: cadetblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="one">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+                    error ea neque! Minima fuga deserunt delectus corrupti
+                    molestiae, eos esse quos vel reiciendis neque quibusdam!
+                </p>
+            </div>
+            <div class="two">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Corporis eius, consequuntur facere iure error fugiat
+                    architecto illo, repudiandae magni doloremque non molestiae
+                    qui expedita iste!
+                </p>
+            </div>
+            <div class="three">
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Repudiandae porro a harum in voluptate reprehenderit
+                    necessitatibus, placeat cumque est odio accusamus! Quaerat
+                    nesciunt tempora dolorum voluptate ex dolor natus fuga
+                    possimus totam ipsam, saepe odio nemo officia accusamus nam
+                    voluptates magnam soluta autem animi quia veniam praesentium
+                    excepturi? Incidunt, quia.
+                </p>
+            </div>
+            <div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Esse, expedita ex culpa corporis quidem amet ducimus aut
+                    facilis harum atque veniam similique facere quia odio
+                    exercitationem, aliquam voluptates at molestiae!
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

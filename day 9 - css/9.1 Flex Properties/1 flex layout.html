@@ -1,0 +1,200 @@
+<!--There was no dedicated folder for this so I had to create one myself.-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Flex Layout</title>
+
+        <style>
+            .container-base {
+                color: white;
+                display: flex;
+                margin-bottom: 20px;
+            }
+            .container-base > * {
+                width: 100px;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .red {
+                background-color: #eb4d4b;
+            }
+            .orange {
+                background-color: #f0932b;
+            }
+            .yellow {
+                background-color: #f6e58d;
+            }
+            .green {
+                background-color: #6ab04c;
+            }
+            .blue {
+                background-color: #4834d4;
+            }
+            .indigo {
+                background-color: #30336b;
+            }
+            .purple {
+                background-color: #be2edd;
+            }
+
+            h2 {
+                font-family: Tahoma, Geneva, Verdana, sans-serif;
+                color: #304050;
+            }
+
+            /* The default value for order property is 0. If an element has a property greater than 0,
+            it is moved to the end of the flex. If there are multiple elements with nonzero order,
+            the one with highest value will be arranged at the end of the flex.*/
+            /* Let's set some values for the orange and green divs so that they appear at the end*/
+            .test1 > .green {
+                order: 3;
+            }
+            .test1 > .orange {
+                order: 1;
+            }
+
+            /* Normally, when the width of the content exceeds our available space, the remaining items shrink to fit,
+            or they may just remain out of the screen, which is not ideal. So we cann instaed use the property called wrap */
+            .test2 {
+                flex-wrap: wrap;
+                /* We can also set it to wrap-reverse, which will wrap the items on the row above, not below. Its default value is nowrap */
+            }
+
+            /* When the flex items are not taking the entire width/ height(if direction column),
+            it can be arranged in various ways, default is flex-start. But we can use flex-end or center, to center on the main axis
+            */
+            .test3 {
+                justify-content: flex-end;
+            }
+
+            /* There's also other values like space-between, space-around and space-evenly
+            These help to distribute the remaining spaces around. Change the value below to see effect: */
+            .test4 {
+                justify-content: space-around;
+            }
+
+            /* What if we want to arrange the items differently on the cross axis? We use align-items for it
+            Since the normal height is content height, we need to first set a height for the effect to show.
+            Default value is stretch, but we can use flex-end, center just like justify-content
+            We can also use properties like stretch, to stretch the entire height, and baseline */
+            .test5 {
+                height: 100px;
+                align-items: stretch;
+            }
+
+            /* After setting align items on the parent container, we might want to make changes to individual items inside
+            in order to do that, we can use align-self property on the child. For example
+            when parent is set to center, the green div may want to be at flex-start */
+            .test6 {
+                height: 120px;
+                align-items: center;
+            }
+            .test6 > .green {
+                align-self: flex-start;
+            }
+
+            /* The align-items property only works when we have flex turned off. In order to align all items with flex,
+            we need to use align-content. It takes the same values, but it takes effect when we run out of space and need to rearrange our items */
+            .test7 {
+                height: 100px;
+                flex-wrap: wrap;
+                align-content: center;
+            }
+
+            /* We can review https://css-tricks.com/snippets/css/a-guide-to-flexbox/ to remember when we forget how */
+        </style>
+    </head>
+
+    <body>
+        <div class="container-base">
+            <div class="red">Red</div>
+            <div class="orange">Orange</div>
+            <div class="yellow">Yellow</div>
+            <div class="green">Green</div>
+            <div class="blue">Blue</div>
+            <div class="indigo">Indigo</div>
+            <div class="purple">Purple</div>
+        </div>
+
+        <h2>Property> order</h2>
+        <div class="container-base test1">
+            <div class="red">Red</div>
+            <div class="orange">Orange</div>
+            <div class="yellow">Yellow</div>
+            <div class="green">Green</div>
+            <div class="blue">Blue</div>
+            <div class="indigo">Indigo</div>
+            <div class="purple">Purple</div>
+        </div>
+
+        <h2>Property> wrap</h2>
+        <div class="container-base test2">
+            <div class="red">Red</div>
+            <div class="orange">Orange</div>
+            <div class="yellow">Yellow</div>
+            <div class="green">Green</div>
+            <div class="blue">Blue</div>
+            <div class="indigo">Indigo</div>
+            <div class="purple">Purple</div>
+        </div>
+
+        <h2>Property> justify-content: flex-end</h2>
+        <div class="container-base test3">
+            <div class="red">Red</div>
+            <div class="orange">Orange</div>
+            <div class="yellow">Yellow</div>
+            <div class="green">Green</div>
+            <div class="blue">Blue</div>
+            <div class="indigo">Indigo</div>
+            <div class="purple">Purple</div>
+        </div>
+
+        <h2>Property> justify-content: space-around</h2>
+        <div class="container-base test4">
+            <div class="red">Red</div>
+            <div class="orange">Orange</div>
+            <div class="yellow">Yellow</div>
+            <div class="green">Green</div>
+            <div class="blue">Blue</div>
+            <div class="indigo">Indigo</div>
+            <div class="purple">Purple</div>
+        </div>
+
+        <h2>Property> align-items: stretch</h2>
+        <div class="container-base test5">
+            <div class="red">Red</div>
+            <div class="orange">Orange</div>
+            <div class="yellow">Yellow</div>
+            <div class="green">Green</div>
+            <div class="blue">Blue</div>
+            <div class="indigo">Indigo</div>
+            <div class="purple">Purple</div>
+        </div>
+
+        <h2>Property> align-items: center</h2>
+        <div class="container-base test6">
+            <div class="red">Red</div>
+            <div class="orange">Orange</div>
+            <div class="yellow">Yellow</div>
+            <div class="green">Green</div>
+            <div class="blue">Blue</div>
+            <div class="indigo">Indigo</div>
+            <div class="purple">Purple</div>
+        </div>
+
+        <h2>Property> align-content: center</h2>
+        <div class="container-base test7">
+            <div class="red">Red</div>
+            <div class="orange">Orange</div>
+            <div class="yellow">Yellow</div>
+            <div class="green">Green</div>
+            <div class="blue">Blue</div>
+            <div class="indigo">Indigo</div>
+            <div class="purple">Purple</div>
+        </div>
+    </body>
+</html>

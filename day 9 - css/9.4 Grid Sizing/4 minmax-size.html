@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MizMax Size Grid</title>
+        <style>
+            /* In addition to the fractional division, we can instead use the minmax function
+    It essentially sets an upper and a lower bound for the width/height of a column/row */
+
+            /* In this example, the row has a minimum height of 400px, but it can expand to the entire remaining space (if a height is set, which in this case is not)
+    (I had to consult witih GPT for this one to be 100% sure)
+    For the column, same thing, takes minimum 400px but can grow to take remaining space as well.
+    Though in this case, using 5fr is the same as using 1fr, because we don't have any other items with unit of fr to compare it with.
+
+    Also, both the min and max values can be fixed vlaues as well.
+    */
+            .grid-container {
+                display: grid;
+                grid-template-rows: 200px minmax(400px, 5fr);
+                grid-template-columns: 200px minmax(400px, 5fr);
+            }
+
+            .grid-item {
+                font-size: 3rem;
+                background-color: darkviolet;
+                border: 5px solid goldenrod;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>MinMax Size Grid</h1>
+        <div class="grid-container">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+        </div>
+    </body>
+</html>

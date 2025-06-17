@@ -1,0 +1,199 @@
+<!--There was no dedicated folder for this so I had to create one myself.-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Flex Layout</title>
+
+        <style>
+            /* A paragraph item is block by default, but when it is included inside a flex containter, it is just a flex item and behaves the same way.
+            When we shrink the page width, the elements start to shrink in width as well, until they reach the minimum width
+            i.e. for text item, the width of longest word in that item. Beyond this, the items will be pushed out of the frame
+            
+            In sizing an item, theere is a priority: min-width/max-width > flex basis (width along main axis) > height/width > content width */
+            .container-base {
+                border: 4px solid blue;
+                color: white;
+                display: flex;
+                gap: 10px;
+            }
+            .container-base > * {
+                border: 2px solid gold;
+            }
+
+            .home {
+                background-color: #eb4d4b;
+            }
+            .about {
+                background-color: #be2edd;
+            }
+            .contact {
+                background-color: #30336b;
+            }
+            .detail {
+                background-color: #6ab04c;
+            }
+
+            h2 {
+                font-family: Tahoma, Geneva, Verdana, sans-serif;
+                color: #304050;
+            }
+
+            /* When we have no width set, the default width of each item is set to the content width.
+            But if we set a width ourselves, it will respect the value in that property and maintain it whether ir is smaller/larger than content width
+            If we shrink the screen width beyond the total widths, it will once again follow the same shrinking pattern as previously with default width */
+            .test1 > * {
+                width: 100px;
+            }
+
+            /* If we instead set the flex-basis property, it will override any width set, and become the new width.
+            It is used when the content may be row or column direction, but we want the same length along the main axis
+            In this case too, when we shrink the screen it follows the default pattern of shrinking each item */
+            .test2 > * {
+                width: 100px;
+                flex-basis: 150px;
+            }
+
+            /* Now if we instead have a max-width set alongside the flex-basis, it will grow upto whichever is smaller when there is enough space*/
+            .test3 > * {
+                flex-basis: 100px;
+                max-width: 150px;
+                /* This one appears 100px even though 150 is set as max-width, we are just stating that it will never cross 150px */
+            }
+            /* If we instead had flex-basis higher than max-width value, it would adapt the width of the max-width value instead */
+
+            /* The min-width property can be used to set a minimum width, that even when shrinking the screen, would need to be respected
+            If there is not enough space to contain the minimum width of all items, the items would go out of the screen instead of shrinking*/
+            .test4 > * {
+                flex-basis: 150px;
+                min-width: 100px;
+            }
+            /* Once again, when flex-basis is set, the value to be respected is the larger one, when space is available
+            But when space isn't available, it shrinks until min-width, then doesn't shrink any further, and gets out of the screen partially*/
+
+            /* Growing and shrinking is the fundamental part of FLEXbox and it is controlled by two properties
+            flex-grow decides whether elements can grow to cover full flex width when space is spared
+            flex-shrink decides whether elements can shrink to accomodate all items in new width if there's not enough space
+            When both properties are set to 0, the elements will be fixed sized */
+            .test5 > * {
+                flex-basis: 100px;
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+
+            /* When an element is allowed to grow but not allowed to shrink, its initial size is set to flex-basis value
+            Then if space is available, it grows to take all the remaining space
+            If space isn't available and the screen is made narrower, the items go off page instead of shrinking */
+            .test6 > * {
+                flex-basis: 100px; /* basically acts as min-width */
+                flex-grow: 1;
+                flex-shrink: 0;
+            }
+
+            /* Now if we instead only allow shrinking but not growing, it is the default behavior of flexbox
+            The initial size is the flex-basis, it doesn't grow even when there's ample space
+            But when less space is available than allocated, it will shrink to fit within the new available width
+            We can see this in test 1,2,3 where the width, flex basis and max-width all act as the maximum width but it can shrink */
+
+            /* Finally, what if we allowed our items to both grow, and shrink? The flex-basis would become pointless
+            Thus we normally put the value of flex basis to 0 when using this behavior.
+            We can also use a shorthand for flex: grow shrink basis; as flex: 1 1 0; for same effect */
+            .test7 > * {
+                flex: 1; /* using this is the same as flex: 1 1 0 */
+            }
+
+            /* We can make use of this single value of flex to decide a ratio of sizes
+            When we put flex: 1 on one item and flex: 2 on another, we allow them to grow and shrink while respecting the 1:2 ratio
+            The second one will be double the width of the first when shrinking and growing. We can see an example here */
+            .test8 > .home {
+                flex: 1; /* if set only for this item, it will take all the remaining space itself */
+            }
+            .test8 > .about {
+                flex: 2;
+            }
+            .test8 > .contact {
+                flex: 3;
+            }
+            .test8 > .detail {
+                flex: 4;
+            }
+
+            /* We can try an exercise from the course here: https://appbrewery.github.io/flexbox-sizing-exercise/ */
+        </style>
+    </head>
+
+    <body>
+        <div class="container-base">
+            <p class="home">Home</p>
+            <p class="about">About</p>
+            <p class="contact">Contact Us</p>
+            <p class="detail">Wild learning going on around here</p>
+        </div>
+
+        <h2>Property> width</h2>
+        <div class="container-base test1">
+            <p class="home">Home</p>
+            <p class="about">About</p>
+            <p class="contact">Contact Us</p>
+            <p class="detail">Wild learning going on around here</p>
+        </div>
+
+        <h2>Property> flex-basis</h2>
+        <div class="container-base test2">
+            <p class="home">Home</p>
+            <p class="about">About</p>
+            <p class="contact">Contact Us</p>
+            <p class="detail">Wild learning going on around here</p>
+        </div>
+
+        <h2>Property> max-width</h2>
+        <div class="container-base test3">
+            <p class="home">Home</p>
+            <p class="about">About</p>
+            <p class="contact">Contact Us</p>
+            <p class="detail">Wild learning going on around here</p>
+        </div>
+
+        <h2>Property> min-width</h2>
+        <div class="container-base test4">
+            <p class="home">Home</p>
+            <p class="about">About</p>
+            <p class="contact">Contact Us</p>
+            <p class="detail">Wild learning going on around here</p>
+        </div>
+
+        <h2>Property> flex-grow:0, flex-shrink:0</h2>
+        <div class="container-base test5">
+            <p class="home">Home</p>
+            <p class="about">About</p>
+            <p class="contact">Contact Us</p>
+            <p class="detail">Wild learning going on around here</p>
+        </div>
+
+        <h2>Property> flex-grow:1, flex-shrink:0</h2>
+        <div class="container-base test6">
+            <p class="home">Home</p>
+            <p class="about">About</p>
+            <p class="contact">Contact Us</p>
+            <p class="detail">Wild learning going on around here</p>
+        </div>
+
+        <h2>Property> flex-grow:1, flex-shrink:1</h2>
+        <div class="container-base test7">
+            <p class="home">Home</p>
+            <p class="about">About</p>
+            <p class="contact">Contact Us</p>
+            <p class="detail">Wild learning going on around here</p>
+        </div>
+
+        <h2>Property> flex ratio</h2>
+        <div class="container-base test8">
+            <p class="home">Home</p>
+            <p class="about">About</p>
+            <p class="contact">Contact Us</p>
+            <p class="detail">Wild learning going on around here</p>
+        </div>
+    </body>
+</html>
