@@ -1,0 +1,194 @@
+body {
+    font-family: 'Transpass', 'Open Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+p {
+    /* Default stuff makes things harder to customize */
+    padding: 0;
+    margin: 0;
+}
+
+/* Let me get started with the hero section first */
+
+#hero {
+    background-color: #0B1D51;
+    color: #fff;
+    display: grid;
+    grid-template: 2fr 1fr / 2fr 1fr;
+    gap: 20px;
+    padding: 100px 15%;
+}
+#name {
+    font-family: 'Unispace', 'NSimSun', serif;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid #fff;
+}
+#name span {
+    color: #fff8;
+}
+#pfp {
+    grid-area: 1 / 2 / 3 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pfp>img {
+    width: 75%;
+    border-radius: 50%;
+    border: 10px solid #eee;
+}
+#bio {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
+/* Time for the resume section*/
+#resume {
+    background-color: #725CAD;
+    padding: 50px 15%;
+}
+
+#academics, #skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+#academics {
+    margin-bottom: 100px;
+}
+.heading {
+    font-family: 'Unispace', 'NSimSun', serif;
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 50px;
+}
+/* Once we set up cards once, the job will become a whole lot easier */
+.card {
+    /* I'll set the widths individually but let's set a baseline*/
+    width: 40%;
+    text-align: center;
+    background-color: #EFE4D2;
+    color: #000;
+    border: 10px solid #000;
+    border-radius: 10px;
+    box-shadow: 10px 10px #0008;
+    min-height: 250px;
+}
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-decoration: underline;
+    padding: 0;
+    margin-bottom: 5px;
+}
+.card .college {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.description {
+    font-size: 1.5rem;
+    margin: 15px;
+    color: #444;
+}
+.timeframe {
+    font-size: 1.2rem;
+}
+
+#resume-link {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+#resume-link a {
+    color: #EFE4D2;
+}
+#resume-link a:hover{
+    background-color: #EFE4D2;
+    color: #000;
+}
+
+/* On to the portfolio section */
+#portfolio {
+    background-color: #8CCDEB;
+    padding: 50px 15% 100px;
+}
+.portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+#portfolio .card {
+    flex-basis: 30%;
+}
+.card img {
+    max-width: 100%;
+    height: 300px; 
+    /* Hopefully will go as expected */
+}
+#portfolio .title {
+    font-size: 1.5rem;
+}
+#portfolio .description {
+    font-size: 1.2rem;
+}
+
+/* I think we can safely move on to the about me */
+#aboutme {
+    background-color: #FFE3A9;
+    padding: 50px 15% 100px;
+}
+#aboutme .heading {
+    color: #000;
+}
+.trait-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.trait{
+    background-color: #0002;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    border-radius: 10px;
+    padding: 20px;
+}
+.symbol {
+    max-width: 50%;
+    padding-left: 25%;
+}
+.reverse .symbol{
+    order: 1;
+}
+.trait-text {
+    color: #0B1D51;
+    grid-column: 2 / -1 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.reverse .trait-text {
+    grid-column: 1 / -2;
+}
+
+/* Final Contact Me Section Now */
+footer{
+    text-align: center;
+    margin: 40px 0;
+}
+footer .title {
+
+    margin: 20px;
+}
+#contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}

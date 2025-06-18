@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Grid Placement</title>
+        <style>
+            /* I didn't keep any other demo files but this one, because the rest of the stuff had their exercise
+    but this one didn't, so I'll just keep it here. The documentation is in the .book ruleset */
+            body {
+                padding: 0;
+                margin: 0;
+            }
+
+            .container {
+                height: 100vh;
+                display: grid;
+                gap: 3rem;
+                grid-template-columns: 1fr 1fr 1.5fr;
+                grid-template-rows: 1fr 1fr;
+            }
+
+            .item {
+                font-size: 5rem;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: blueviolet;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cowboy {
+                background-color: #00b9ff;
+                grid-area: 1 / 1/ 2 /3;
+            }
+
+            .astronaut {
+                background-color: #03989e;
+                grid-area: 2 / 1 / 3 / 3;
+            }
+
+            .book {
+                background-color: #e5833180;
+                grid-area: 1 / 2 / 3 / 4;
+
+                /* We can see here that the starting column for this item is 2, which overlaps with both cowboy and astronaut
+      Grid allows us to do that, but since we don't want to cover the content enreily, we can also set a transparency
+      When we use 8-hex color scheme, the last two are for alpha, whose value too is from 00 to ff
+      Here the value 80 is used because it is 128 in base 10 i.e. half of ff (255 in base 10)*/
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="item cowboy">🤠</div>
+            <div class="item astronaut">👨‍🚀</div>
+            <div class="item book">📖</div>
+        </div>
+    </body>
+</html>

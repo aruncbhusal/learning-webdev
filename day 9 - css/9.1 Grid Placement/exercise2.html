@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Grid Placement</title>
+        <style>
+            /* In order to have an item occupy more than one column/row, we need to use property on the item
+    We can use grid-column to specify the length, by using span n where n is the number of columns to span
+    It is a shorthand for grid-column-start and grid-column-end
+    The grid lines start from 1 on the left to n on the right, and -1 on the right to -n on the left. We can put the values accordingly
+    if we use -start: 1 and -end: 3 it is the same as -start:3 and -end:1
+    
+    Similarly, we can also have an item span multiple rows. */
+
+            /* We might also want to place the items freely on the grid. In order to have an elmeent after others, we can give it an order value
+    Default value for order is 0, but if we give any higher value, it will end up at the end */
+
+            /* In this exercise, the astronaut div has already been given an order to be placed at the end, but my task is to have it span two columns.*/
+            body {
+                padding: 0;
+                margin: 0;
+            }
+
+            .container {
+                height: 100vh;
+                display: grid;
+                gap: 3rem;
+                grid-template-columns: 1fr 1fr 1.5fr;
+                grid-template-rows: 1fr 1fr;
+            }
+
+            .item {
+                font-size: 5rem;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: blueviolet;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cowboy {
+                background-color: #00b9ff;
+                grid-column: span 2;
+            }
+
+            .astronaut {
+                background-color: #03989e;
+                order: 1;
+
+                /* TODO: Make the astronaut box look like the goal2 image. */
+                grid-column: span 2;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="item cowboy">🤠</div>
+            <div class="item astronaut">👨‍🚀</div>
+            <div class="item book">📖</div>
+        </div>
+    </body>
+</html>

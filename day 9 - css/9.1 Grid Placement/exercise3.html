@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Grid Placement</title>
+        <style>
+            /* By default the items are palced one after the other in the order they are in the HTML
+    If we use order, we can give some elements a new order and place them as we want, in that way arranging it accordingly
+    But instead, we can alos set their start and end values explicitly in order to place them as we want
+    We cann specify the row-start, column-start, row-end and column-end for full control of its placement */
+
+            /* In this exercise, we need to use the grid-row property to have it take up both the rows in the right
+    I will do it in two ways */
+            body {
+                padding: 0;
+                margin: 0;
+            }
+
+            .container {
+                height: 100vh;
+                display: grid;
+                gap: 3rem;
+                grid-template-columns: 1fr 1fr 1.5fr;
+                grid-template-rows: 1fr 1fr;
+            }
+
+            .item {
+                font-size: 5rem;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: blueviolet;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cowboy {
+                background-color: #00b9ff;
+                grid-column: span 2;
+            }
+
+            .astronaut {
+                background-color: #03989e;
+                order: 1;
+                grid-area: 2 / 1 / 3 / 3;
+            }
+
+            .book {
+                background-color: #e58331;
+                /* TODO: Make the book div look like 
+      the goal3 image using grid-row. */
+
+                /* The first way is to simply specify the row position */
+                grid-row: span 2;
+                /* But we cann also divide this shorthand into its parts: */
+                grid-row-start: 1;
+                grid-row-end: 3;
+                /* For a grid with two row tracks, there are 3 lines, we're extending from 1(top border) to 3 (bottom border)
+      We can also set the value for columns, though it is not mandatory */
+                grid-column-start: 3;
+                grid-column-end: 4;
+
+                /* Or, like in the astronaut class above, we can use the shorthand grid-area
+      It allows us to place row-start / column-start / row-end / column-end within a single rule
+      In order for it to behave as expected, we may need to put grid-area in all grid items */
+                grid-area: 1 / 3 / 3 / 4;
+
+                /* We can also set the values for start and end values in negative. For example, the area setup above is the same as: */
+                grid-area_: 1 / -1 / 3 / -1;
+                /* This is not in effect because of the underscore, two values of grid-area do not play well with each other */
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="item cowboy">🤠</div>
+            <div class="item astronaut">👨‍🚀</div>
+            <div class="item book">📖</div>
+        </div>
+    </body>
+</html>

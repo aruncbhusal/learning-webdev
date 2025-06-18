@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mondrian Project</title>
+        <style>
+            /* 
+    Write your CSS here 
+    Gap Colour: #000
+    White: #F0F1EC
+    Red: #E72F24
+    Black: #232629
+    Blue: #004592
+    Yellow: #F9D01E
+
+    For dimensions, see dimensions.png image.
+    HINT: Remember you can't change the properties of grid lines.
+    But grid lines are transparent!
+    */
+
+            /* The task here is to write both the HTML and the CSS so that the final output looks like the one in the goal (famous painting by Piet Maondrian)
+    The dimensions in the goal image, I will include here, I will document any differences between my solution and the course solution as well
+    Let's begin */
+
+            .main-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .image-container {
+                /* I had height and width set here, but that was removed since we have a margin inside and it threw off the proportions I think */
+                background-color: #000;
+
+                /* Added black background because we want the gaps to be black
+      Also now we need to make this one a grid with 4 rows and 4 columns */
+                display: grid;
+                grid-template: 414px 130px 155px 20px / 320px 198px 153px 50px;
+                gap: 9px;
+            }
+
+            /* Time for the actual styling of the main components now */
+            .red {
+                background-color: #e72f24;
+            }
+            .white {
+                background-color: #f0f1ec;
+            }
+            .yellow {
+                background-color: #f9d01e;
+            }
+            .blue {
+                background-color: #004592;
+            }
+            .grey {
+                background-color: #232629;
+            }
+
+            /* Now that colors are done, let's arrange them well */
+            .white#one {
+                grid-column: span 3;
+            }
+            .white#two {
+                grid-row: span 2;
+            }
+            .white#three {
+                grid-area: span 2 / span 2;
+            }
+            .blue {
+                grid-area: 2 / 4 / 3 / 5;
+                /* In fact I could have just used 2 / 4 here because it is auto one cell in size */
+
+                border: 10px solid #000;
+                /* The reason I had used margin was that when I used border, I only set border: 10px; and wondered why it didn't work
+      I didn't give all the values, then jumped ship to another method.*/
+                /* margin-bottom: 10px; */
+            }
+            .white#four {
+                grid-row: span 2;
+            }
+
+            /* Okay this is it, now differences with the course solution: 
+    1. First thing is that she used the flex on the body this time. I had a separate container just for centering
+    In last challenge I had it on body but she didn't so this time I changed, but she used body this time. okayyy
+    2. She had the width and height property in her container, but the black line didn't appear sticking on the bottom
+    This was because I had margin for the blue one instead of border. Fixed that, but we don't actually need the height/width there anyway */
+        </style>
+    </head>
+
+    <body>
+        <!-- Write your HTML here -->
+        <!--First we want a container that will contain the image, we will need to center it -->
+        <div class="main-container">
+            <!--okay it looks like I need 9 divs in total inside the container, but since I want a background color on the container, let's have another container -->
+            <div class="image-container">
+                <div class="red"></div>
+                <div id="one" class="white"></div>
+                <div id="two" class="white"></div>
+                <div id="three" class="white"></div>
+                <div id="four" class="white"></div>
+                <div id="five" class="white"></div>
+                <div class="yellow"></div>
+                <div class="blue"></div>
+                <div class="grey"></div>
+            </div>
+        </div>
+    </body>
+</html>
