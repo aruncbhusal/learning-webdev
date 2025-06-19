@@ -49,3 +49,14 @@ Day 8 (2082-03-03):
 - Flex layout: justify, align, wrap and flex sizing: grow, shrink, basis
 - display: grid and template columns and rows
 - Grid sizing, fractional units, responsive grids, minmax and repeat
+
+Day 9:
+- Grid placement: fractional units, fixed units, span
+- Bootstrap review: linked to learning-python repository
+- Capstone html+css project: personal website
+
+Day 10:
+- Introduction to JavaScript: alert, prompt, console.log
+- Data types, variables, naming
+- String concatenation and functions: toLowerCase, toUpperCase, slice
+- Functions: input to functions, return from functions
