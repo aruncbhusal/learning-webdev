@@ -60,3 +60,10 @@ Day 10:
 - Data types, variables, naming
 - String concatenation and functions: toLowerCase, toUpperCase, slice
 - Functions: input to functions, return from functions
+
+Day 11:
+- Intermediate JavaScript: random number generation
+- Conditionals and control flow: if, else, else if
+- Looping: while loops, for loops, fibonacci generation
+- DOM: grab the objects using getElement, querySelector
+- Manipulate the DOM: style, innerHTML, textContent

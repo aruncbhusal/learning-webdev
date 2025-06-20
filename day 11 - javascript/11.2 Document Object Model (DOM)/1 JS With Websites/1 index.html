@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JS Test</title>
+    </head>
+    <!-- We have multiple ways to add JS to our website, similar to CSS
+ We can use it as inline with the onload attribute on our tag, like the one below
+ Here we add a script to alert the user once the body has been loaded, but similar to inline CSS, it too creates bloat
+ So we defer using it like this
+ Notice that we need to insert the script within double quotes, so nay double quotes in our JS might interfere
+ The engine will confuse starting of any text in the script with ending of the script so we instead use single quotes for them -->
+    <body onload="alert('The website is loaded successfully')">
+        <h1>Hi</h1>
+        <!-- Another way to add JavaScript to websites is using the script tag. It is a way to add internal JavaScript
+     The CSS for a website is palced in the head section before the body because we want to load the styling before we load any content
+     That allows for a seamless experience, but we don't want script to be loaded before our elements, because we might want to manipulate them
+     And it cannot manipulate elements that do not exist yet. Also the website might load slower if we were to apply the code before content -->
+        <script>
+            console.log('This was added later');
+        </script>
+        <!-- Apart from these methods, we can also externally add JavaSript onto our website, using the script tag as well, similar to CSS -->
+        <script src="./index.js" charset="utf-8"></script>
+    </body>
+</html>

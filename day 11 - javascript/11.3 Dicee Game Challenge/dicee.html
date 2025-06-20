@@ -1,0 +1,39 @@
+<!-- For this dice game, the HTML and CSS are written already for us, we just need to use JS to make it work
+ The game goes like this: When we refresh, the two dices are thrown and based on the result, whichever "player" has a higher number wins
+ And the result is displayed in the heading. It should be pretty simple. Let's make it happen.
+ The changes I made to the HTML before beginning: added the script tag and linked to new index.js file, and added placeholder images to img-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <title>Dicee</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Refresh Me</h1>
+
+            <div class="dice">
+                <p>Player 1</p>
+                <img class="img1" src="./images/dice6.png" />
+            </div>
+
+            <div class="dice">
+                <p>Player 2</p>
+                <img class="img2" src="./images/dice6.png" />
+            </div>
+        </div>
+
+        <script src="./index.js"></script>
+    </body>
+
+    <footer>
+        Arun 🎲 Chandra 🎲 Bhusal <br />
+        (Course by AppBrewery)
+    </footer>
+</html>

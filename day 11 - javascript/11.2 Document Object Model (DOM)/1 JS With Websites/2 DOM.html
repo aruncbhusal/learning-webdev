@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DOM</title>
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <a href="#">A link as well</a>
+        <input type="checkbox" />
+        <ul>
+            <li>First item</li>
+            <li>Second item</li>
+            <li>Third item</li>
+        </ul>
+        <!-- A website is a HTML document, and it contains elements. The browser converts these elements into objects
+        These objects form the Document Object Model, and the website appears as a tree
+        From this DOM, we can use JS to manipulate the objects as we want
+        We can use the internal script here to see what happens: -->
+        <script>
+            console.log(document);
+            // This is the full HTML document which contains objects(elements) as its children
+            console.log(document.firstElementChild);
+            // By using this we take a hold of the first child of the document which is the root of our HTML i.e. HTML tag
+            console.log(document.firstElementChild.firstElementChild);
+            // This lets us access the first child of the document i.e. the head element
+            console.log(document.firstElementChild.lastElementChild);
+            // Similarly, this one lets us take a hold of the body element. We can also store it in a variable
+            var heading =
+                document.firstElementChild.lastElementChild.firstElementChild;
+            console.log(heading);
+            // This is the heading h1 tag which has the text hello. We can also manipulate that text
+            heading.innerHTML = 'Something else';
+            // Not only that, we can also change something else, like the style of the element
+            heading.style.color = 'red';
+
+            // These are the properties of the elements/objects, which we can access with the dot(.) notation
+            // We also have methods associated to objects which can be triggered by using method() format
+            document.querySelector('input').click();
+            // Using this command we can select the "input" element in our DOM (which is the checkbox) and click on it
+            // In this way we can manipulate both the attributes and behaviors of the HTML elements using JavaScript.
+        </script>
+    </body>
+</html>
