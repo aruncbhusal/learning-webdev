@@ -1,0 +1,63 @@
+body {
+  text-align: center;
+  background-color: #011F3F;
+}
+
+#level-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  margin:  5%;
+  color: #FEF2BF;
+}
+
+.container {
+  display: block;
+  width: 50%;
+  margin: auto;
+
+}
+
+.btn {
+  margin: 25px;
+  display: inline-flex; /* Changed from inline-block so that I can add text and manage it */
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+  border-radius: 20%;
+}
+
+.game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
+
+/* Since I decided to add text tot the buttons as well, I need to style them */
+.btn {
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  color: white;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer; /* Added as per GPT's suggestions later */
+}

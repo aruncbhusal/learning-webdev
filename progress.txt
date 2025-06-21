@@ -67,3 +67,7 @@ Day 11:
 - Looping: while loops, for loops, fibonacci generation
 - DOM: grab the objects using getElement, querySelector
 - Manipulate the DOM: style, innerHTML, textContent
+
+Day 12:
+- Advanced JS: Event listeners, callback functions, higher order functions
+- jQuery: syntax, DOM manipulation, event listeners, animations

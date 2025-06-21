@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQuery</title>
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <h1>This is a heading</h1>
+        <h2 class="hide">Hide</h2>
+        <h2 class="fade">Fade</h2>
+        <h2 class="slide">Slide</h2>
+        <h2 class="animate">Animate</h2>
+        <a href="https://google.com">I'm Feeling Lucky!</a>
+        <button>Click Me</button>
+        <button class="hider">Click Me</button>
+        <button class="fader">Click Me</button>
+        <button class="slider">Click Me</button>
+        <button class="animator">Click Me</button>
+        <input type="text" />
+        <button class="to-remove"></button>
+
+        <!-- In order to add jQuery to our site, we can go to https://jquery.com/ and either download it, or use it via a CDN
+        For CDD method, we can simply get the link or script tag from https://releases.jquery.com/
+        When using CDN, if a user has been to another site using the same CDN to download jQuery, it is cached into user's browser
+        and the file doesn't even need to be downloaded, making it super fast
+        To use it via CDN, we can simply do what we did with Bootstrap, and place it here  -->
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+        <script src="./index.js" charset="utf-8"></script>
+        <!-- We need to have the jQuery script tag before our own script tag because our JavaScript code may make use of the jQuery library
+        and we can't do so when the jQuery library hasn't yet been loaded. -->
+    </body>
+</html>
