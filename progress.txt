@@ -71,3 +71,7 @@ Day 11:
 Day 12:
 - Advanced JS: Event listeners, callback functions, higher order functions
 - jQuery: syntax, DOM manipulation, event listeners, animations
+
+Day 13:
+- UNIX command line (bash shell) and useful commands
+- Backend development using Node.JS, native modules and npm

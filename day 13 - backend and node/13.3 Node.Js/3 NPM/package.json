@@ -1,0 +1,16 @@
+{
+  "name": "intro-to-npm",
+  "version": "1.0.0",
+  "description": "First npm project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arun C Bhusal",
+  "license": "ISC",
+  "dependencies": {
+    "sillyname": "^0.1.0",
+    "superheroes": "^4.0.0"
+  }
+}
