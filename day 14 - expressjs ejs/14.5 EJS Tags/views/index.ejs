@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJS Tags</title>
+</head>
+
+<body>
+  <h1>
+    <!-- Tite goes here -->
+     <%= title %>
+  </h1>
+  <p>Current second:
+    <!-- Current second goes here -->
+     Current second : <%= seconds %>
+  </p>
+  <% if (seconds % 2===0) { %>
+  <ul>
+    <!-- List goes here if current second is even. -->
+     <% for (var i = 0; i<items.length; i++) { %>
+      <li>
+        <%= items[i] %>
+      </li>
+      <% }; %>
+      <!-- In the course solution, she used forEach.
+       That opens doors for me to use it from now -->
+    </ul>
+    <!-- Otherwise it should display the following: -->
+    <!-- <p>No items to display</p> -->
+  <% } else { %>
+  <p>No items to display</p>
+  <% }; %>
+  <p>
+    <!-- HTML content goes here -->
+     <%- htmlContent %>
+  </p>
+
+  <!-- Footer goes here -->
+   <%- include('footer') %>
+</body>
+
+</html>
