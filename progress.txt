@@ -79,3 +79,7 @@ Day 13:
 Day 14:
 - ExpressJs, endpoints, middlewares: body-parser, morgan
 - EJS and templating: tags, data flow, partials
+
+Day 15:
+- APIs: within the web app, external APIs
+- API Authentication and REST methods

@@ -1,0 +1,179 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+p{
+    padding:0;
+    margin: 0;
+}
+a {
+    display: block;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: unset;
+}
+
+header {
+    background-color: #00809D;
+}
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
+    align-items: center;
+}
+#name {
+    font-size: 2rem;
+    font-family: 'Roboto', "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    padding: 0 2rem;
+}
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    width: 20rem;
+}
+.nav-links *{
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: #000;
+}
+.nav-links .create a {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    border: 2px solid #00607D;
+    border-radius: 10px;
+    width: 8rem;
+}
+.create .symbol{
+    font-size: 2rem;
+    font-weight: 900;
+}
+.nav-links a:hover {
+    color: #fff;
+    cursor: pointer;
+}
+.create a:hover {
+    border: 2px solid #fff;
+}
+main {
+    padding: 0 10%;
+}
+#title {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 50px;
+    font-family: 'Roboto', "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
+}
+.heading {
+    padding: 10px 0;
+    border-bottom: 2px solid #888;
+}
+.post-container ul {
+    list-style:none;
+    padding: 0;
+    margin: 0;
+}
+.post-card{
+    background-color: #ddd;
+    padding: 1rem;
+    transition: all 0.3s linear;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.post-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.post-desc {
+    color: #333;
+}
+.metadata {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.metadata .author-name {
+    font-weight: bolder;
+}
+.metadata .date {
+    color: #666;
+}
+.post-card:hover {
+    transform: scale(1.02);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+}
+input,
+textarea {
+    font-family: 'Roboto','Open Sans', sans-serif;
+    font-size: 1.1rem;
+}
+label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+input {
+    border: 3px solid #333;
+    border-radius: 10px;
+    min-height: 2rem;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+textarea {
+    border: 3px solid #333;
+    border-radius: 10px;
+    min-height: 10rem;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.submit-btn {
+    max-width: 150px;
+    background-color: green;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+.submit-btn:hover {
+    background-color: blue;
+}
+.title-line {
+    display: flex;
+    justify-content: space-between;
+}
+.actions {
+    display: flex;
+    justify-content: space-around;
+}
+.edit-btn-form button, .dlt-btn-form button {
+    border-radius: 50%;
+}
+.edit-btn-form svg, .dlt-btn-form svg {
+    height: 30px;
+    max-width: 50px;
+}
+.edit-btn-form button {
+    background-color: yellow;
+}
+.edit-btn-form button:hover {
+    background-color: gold;
+}
+.dlt-btn-form button {
+    background-color: red;
+}
+.dlt-btn-form button:hover {
+    background-color: brown;
+}
