@@ -1,0 +1,23 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Cordia New', 'Domine', 'Lato', 'Open Sans', sans-serif;
+}
+.container {
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+    font-size: 4rem;
+    font-family: 'BlackChancery', 'Lucida Calligraphy', 'Script MT Bold', cursive;
+    font-weight: 900;
+}
+#tagline {
+    font-size: 2rem;
+    color: #333;
+}
+.main-img {
+    max-height: 50%;
+}

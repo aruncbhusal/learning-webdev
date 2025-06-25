@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>API Capstone</title>
+        <link rel="stylesheet" href="styles/styles.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="heading">Animephile Gallery</h1>
+            <p id="'tagline">
+                Get an anime image delivered straight to your screen.
+            </p>
+
+            <% if (locals.image) { %>
+                <!--
+                    <p class="original-url" hidden><%#image.original.url%></p>
+                -->
+            <% var altText = "An anime image" %>
+            <% if (locals.anime.character && locals.anime.title) { %>
+                <% var altText = `${anime.character} from ${anime.title}`%>
+            <% } %>
+            <!--
+                <img
+                class="main-img"
+                src="<%#image.compressed.url%>"
+                alt="<%#altText%>"
+                />
+            -->
+
+            <% const proxiedCompressed =`/proxy-image?url=${encodeURIComponent(image.compressed.url)}`; %>
+            <% const proxiedOriginal =`/proxy-image?url=${encodeURIComponent(image.original.url)}`; %>
+
+            <p class="original-url" hidden><%= proxiedOriginal %></p>
+
+            <img class="main-img" src="<%=proxiedCompressed%>" alt="<%=altText%>"/>
+
+            <button class="original">Full Sized</button>
+            <!-- Since I've already sent both, I should maybe include a client side script inside here as well -->
+            <!--Since it needs something in the DOM to take the URL from, maybe can't use EJS's variables, so I need a hidden element-->
+
+            <% } else if (locals.error) { %>
+            <p><%= error %></p>
+            <% } %>
+
+            <form action="/image" method="post">
+                <select name="category" id="img-category">
+                    <optgroup label="General">
+                        <option value="random">Random</option>
+                        <option value="girl">Girl</option>
+                        <option value="catgirl">Cat Girl</option>
+                        <option value="blue-eyes">Blue Eyes</option>
+                        <option value="cute">Kawaii</option>
+                        <option value="young-girl">Kawaii Imouto</option>
+                        <option value="maid">Maid</option>
+                        <option value="vtuber">VTuber</option>
+                    </optgroup>
+                    <optgroup label="Outfits">
+                        <option value="thigh-high-socks">
+                            Thigh High Socks
+                        </option>
+                        <option value="uniform">Uniform</option>
+                        <option value="hoodie">Hoodie</option>
+                        <option value="ribbon">Ribbon</option>
+                    </optgroup>
+                    <optgroup label="Hair">
+                        <option value="blue-hair">Blue Hair</option>
+                        <option value="white-hair">White Hair</option>
+                        <option value="blonde">Blonde Hair</option>
+                        <option value="long-hair">Long Hair</option>
+                    </optgroup>
+                    <optgroup label="misc">
+                        <option value="tail">Tail</option>
+                        <option value="foxgirl">Fox Girl</option>
+                    </optgroup>
+                </select>
+                <button type="submit">Get the image!</button>
+            </form>
+        </div>
+        <script>
+            document
+                .querySelector('.original')
+                .addEventListener('click', () => {
+                    document
+                        .querySelector('.main-img')
+                        .setAttribute(
+                            'src',
+                            document.querySelector('.original-url').textContent
+                        );
+                        
+                    document
+                        .querySelector('.main-img')
+                        .toggleClass(
+                            'main-img main-img-large'
+                        );
+                    document.querySelector('.original-url').remove();
+                });
+        </script>
+    </body>
+</html>
