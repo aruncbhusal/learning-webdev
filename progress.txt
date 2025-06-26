@@ -83,3 +83,10 @@ Day 14:
 Day 15:
 - APIs: within the web app, external APIs
 - API Authentication and REST methods
+
+Day 16:
+- Creating a DIY API in the web server
+
+Day 17:
+- Databases: SQL and NoSQL, CRUD operations
+- PosgreSQL syntax and queries: select, insert
