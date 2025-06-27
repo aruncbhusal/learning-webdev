@@ -90,3 +90,6 @@ Day 16:
 Day 17:
 - Databases: SQL and NoSQL, CRUD operations
 - PosgreSQL syntax and queries: select, insert
+
+Day 18:
+- SQL: Join and Returning
