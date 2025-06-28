@@ -1,0 +1,142 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #97B067;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+p {
+    padding: 0;
+    margin: 0;
+}
+h1,h2,h3 {
+    padding:0;
+    margin:0;
+}
+
+.header {
+    text-align:center;
+    background-color: #2F5249;
+    padding: 2rem 10%;
+    color: #fff;
+}
+#heading {
+    font-size: 4rem;
+}
+#subheading {
+    font-size: 1.5rem;
+}
+.page-title {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    margin: 2rem 0;
+}
+.new-book{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.new-book input {
+    border-style: none;
+    border: 3px solid #000;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    max-width: 10rem;
+    cursor: pointer;
+}
+.sort-by {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+.sort-by a {
+    text-decoration: none;
+    padding: 10px;
+    color: #000;
+}
+.sort-by a:hover{
+    text-decoration: underline;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+.book {
+    padding: 1rem 10%;
+    margin: 2rem 0;
+    display: flex;
+    gap: 2rem;
+    background-color: #437057;
+}
+.title {
+    font-size: 1.5rem;
+    color: #fff;
+}
+.author, .date-added{
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+.date-added {
+    font-style: italic;
+}
+.review {
+    color: #eee;
+}
+.cover-image img {
+    max-width: 200px;
+    min-width: 200px;
+}
+.book-review{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}
+.action-form {
+    display: flex;
+    justify-content: space-between;
+}
+.edit-btn, .delete-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+.edit-btn{
+    background-color: rgb(173, 184, 46);
+}
+.delete-btn{
+    background-color: rgb(216, 60, 60);
+}
+.footer{
+    text-align: center;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    gap: 1rem;
+    margin-top: 100px;
+}
+.post-form input {
+    min-height: 2rem;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-style: none;
+    border: 3px solid #000;
+}
+#review {
+    min-width: 50%;
+    min-height: 10rem;
+    padding: 10px;
+    font-size: 1.2rem;
+    border-style: none;
+    border: 3px solid #000;
+}

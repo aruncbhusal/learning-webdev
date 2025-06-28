@@ -93,3 +93,6 @@ Day 17:
 
 Day 18:
 - SQL: Join and Returning
+
+Day 19:
+- Database Capstone

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/styles/styles.css" />
+        <title>Book Review Project</title>
+    </head>
+    <body>
+        <div class="body-container">
+            <div class="header">
+                <h1 id="heading">ACB Reviews</h1>
+                <p id="subheading">...where books come to find justice.</p>
+            </div>
+
+            <div class="content">
+                <h2 class="page-title">My Reviews</h2>
+                <form action="/post" method="post" class="new-book">
+                    <input type="hidden" value="0" name="bookId">
+                    <input type="submit" value="+ Add New Book">
+                </form>
+                <div class="sort-by">
+                    <a href="/">Sort by:</a>
+                    <a href="/?sort=id">Date Added</a>
+                    <a href="/?sort=title">Book Title</a>
+                    <a href="/?sort=author">Author Name</a>
+                </div>
+
+                <% books.forEach((book) => { %>
+                <div class="book">
+                    <div class="cover-image">
+                        <img
+                            src="https://covers.openlibrary.org/b/olid/<%=book.openlib_id%>-M.jpg"
+                            alt="<%=book.title%>"
+                            class="cover"
+                        />
+                    </div>
+                    <div class="book-review">
+                        <div class="metadata">
+                            <h3 class="title"><%=book.title%></h3>
+                            <p class="author"><%=book.author%></p>
+                            <p class="rating">
+                                <% for (let i = 0; i<5;i++) { %>
+                                    <% if (i<book.rating) { %>
+                                        ⭐
+                                    <% } else { %>
+                                        🌑
+                                    <% } %>
+                                <% } %>
+                            </p>
+                            <p class="date-added">Date added: <%=book.date%></p>
+                            <p class="review"><%=book.review%></p>
+                        </div>
+                        <form action="/post" method="post" class="action-form">
+                            <input
+                                type="hidden"
+                                name="bookId"
+                                value="<%=book.id%>"
+                            />
+                            <input
+                                type="submit"
+                                value="Edit Post"
+                                class="edit-btn"
+                            />
+                            <input
+                                type="submit"
+                                value="Delete Post"
+                                formaction="/delete"
+                                class="delete-btn"
+                            />
+                        </form>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+            <div class="footer">&copy; ACB 2025</div>
+        </div>
+    </body>
+</html>
