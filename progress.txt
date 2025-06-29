@@ -96,3 +96,7 @@ Day 18:
 
 Day 19:
 - Database Capstone
+
+Day 20:
+- MongoDB, Mongoose: Creating, connecting and using the Database
+- Authentication methods: encryption, hashing, salting, cookie and session.
