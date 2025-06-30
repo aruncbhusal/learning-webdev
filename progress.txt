@@ -100,3 +100,7 @@ Day 19:
 Day 20:
 - MongoDB, Mongoose: Creating, connecting and using the Database
 - Authentication methods: encryption, hashing, salting, cookie and session.
+
+Day 21:
+- React: DOM, Components and ES6 Import/Export
+- React Props

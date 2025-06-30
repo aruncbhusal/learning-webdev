@@ -34,6 +34,9 @@ import session from 'express-session';
 import passport from 'passport';
 import passportLocalMongoose from 'passport-local-mongoose';
 // After all these imports, we can finally use passport
+import { Strategy } from 'passport-google-oauth20';
+// This was in CJS form as well, so had to use this
+import findOrCreate from 'mongoose-findorcreate';
 
 const app = express();
 const port = 3000;
@@ -82,10 +85,17 @@ const userSchema = {
 const userSchema = new mongoose.Schema({
     email: String,
     password: String,
+    googleId: String,
+    secret: String,
 });
+// Since we don't store OAuth the same way with email and password, we need to instead store the googleID
+// Else we can't associate a user with their google account
+// The final part is to associate a secret with each account, and allow submission of secrets
 
 /* To use passport with a mongoose schema, we use the passport-local-module and its given plugin */
 userSchema.plugin(passportLocalMongoose);
+// Also need to include the plugin for findOrCreate since it is not available by default with Mongoose schema
+userSchema.plugin(findOrCreate);
 
 /* Level 2: Encryption
 We can instead use encryption, where we use a secret key to create a different string/data from the plaintext, and store that
@@ -109,12 +119,71 @@ const User = new mongoose.model('User', userSchema);
 We need to create a strategy first, then we can serialize (form a cookie and save), and deserialize (read from the cookie and find out) */
 passport.use(User.createStrategy());
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+// It was fine when using the local strategy to serialize with default methods, but since we're using OAuth, we need to use another
+// This one works for both OAuth and local strategies, and is from https://www.passportjs.org/concepts/authentication/sessions/
+passport.serializeUser((user, done) => {
+    done(null, user.id); // Just store the ID (for the user object)
+});
+
+passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await User.findById(id); // This id is NOT the googleId
+        if (!user) return done(null, false); // or return an error
+        return done(null, user); // full user object now available, this object has the googleId
+    } catch (err) {
+        return done(err);
+    }
+});
+// This is different from the one in the course, well not anymore since I asked GPT and it gave me one that looks pretty similar
+
+// Along with local strategy, we also need the Google Strategy (the Strategy method we've imported)
+passport.use(
+    new Strategy(
+        {
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            callbackURL: 'http://localhost:3000/auth/google/secrets',
+            // Apparently there was a warning because of Google+ deprecation so this was needed at that point:
+            // userProfileURL: 'https://googleapis.com/oauth2/v3/userinfo',
+        },
+        function (accessToken, refreshToken, profile, cb) {
+            User.findOrCreate({ googleId: profile.id }, function (err, user) {
+                return cb(err, user);
+            });
+        }
+    )
+);
+/* I copy pasted from the docs, but since it used require with GoogleStrategy variable containing the module's Strategy,
+I needed to change it to just "Strategy"
+Since we don't have a function called findOrCreate, we need to make it ourself, but since people have already made it,
+we can simply import the mongoose-findorcreate module and add the function ourself */
 
 app.get('/', (req, res) => {
     res.render('home');
 });
+
+/* Since we've implemented Google Auth, we also need to include them in the login and register pages
+So I uncommented the links there, and now we need more routes, ones that lead to /auth/google, and one for /auth/google/secrets
+I'll just copy the code from the docs and modify as needed */
+
+app.get(
+    '/auth/google',
+    passport.authenticate('google', { scope: ['profile'] })
+);
+
+app.get(
+    '/auth/google/secrets',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function (req, res) {
+        // Successful authentication, redirect to secrets.
+        res.redirect('/secrets');
+    }
+);
+
+/* Now that this is done and dusted, let's make the login/signup buttons look better by downloading https://lipis.github.io/bootstrap-social/
+I can then use it to add new classes to btn-social and btn-google to the signup and login buttons */
 
 app.get('/login', (req, res) => {
     res.render('login');
@@ -286,14 +355,94 @@ We might instead want to keep the user authenticated even when the user closes a
 In order to implement this, we need to use a module called passport. To use this module, we need to install the following packages:
 passport, passport-local, passport-local-mongoose, express-session. */
 
-app.get('/secrets', (req, res) => {
-    // Since we redirect to this page if authenticated, we need to add a check here
+// app.get('/secrets', (req, res) => {
+//     // Since we redirect to this page if authenticated, we need to add a check here
+//     if (req.isAuthenticated()) {
+//         res.render('secrets');
+//     } else {
+//         res.redirect('/login');
+//     }
+// });
+// We need to display all secrets rather than a hard coded one, and we want the page to be viewable by anyone
+
+app.get('/secrets', async (req, res) => {
+    // First we need to get all the users with secrets from the db, users whose secret is not equal to null
+    // User.find({ secret: { $ne: null } }, (err, foundUsers) => {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         res.render('secrets', {
+    //             users: foundUsers,
+    //         });
+    //         // Since the secrets.ejs file doesn't have take any users argument, we now need to add templating to show all
+    //     }
+    // });
+    // Transition to async/await syntax
+    try {
+        const foundUsers = await User.find({ secret: { $ne: null } });
+        res.render('secrets', {
+            users: foundUsers,
+        });
+        // Since the secrets.ejs file doesn't have take any users argument, we now need to add templating to show all
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+/* After all the authentication part is done, now we need to work on functionality, we want people to be able to submit their secrets
+So we need a new submit route where people are shown the submit page, as well as can make a post request with their secrets */
+app.get('/submit', (req, res) => {
+    /* In order to be able to submit, we need to have a user be logged in, so we use the code for previous /secrets here */
     if (req.isAuthenticated()) {
-        res.render('secrets');
+        res.render('submit');
     } else {
         res.redirect('/login');
     }
 });
+
+app.post('/submit', async (req, res) => {
+    const submittedSecret = req.body.secret;
+    // Now we need to know who submitted this secret, but we can do that using passport's feature which adds a .user to req
+    // User.findById(req.user.id, (err, foundUser) => {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         if (foundUser) {
+    //             foundUser.secret = submittedSecret;
+    //             foundUser.save(() => {
+    //                 res.redirect('/secrets');
+    //             });
+    //         }
+    //     }
+    // });
+    // Apparently find and findById no longer accept a callback anymore, so we need to transition to modern syntax
+    try {
+        const foundUser = await User.findById(req.user.id);
+        if (foundUser) {
+            foundUser.secret = submittedSecret;
+            // The save method doesn't accept a callback either
+            try {
+                await foundUser.save();
+                res.redirect('/secrets');
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+/* Level 6: OAuth with Google (Next Day)
+I think I'll need to get this done here and now, instead of creating an identical file for the next day as well.
+We can use this method for signup/login to get the load of storing user passwords and securing them off our website, to social media.
+We can let Google users authenticate themselves with our app, and we give access based on their Google ID.
+When logging in, we send them to the google's signin page where we can request for different data on them, and they can choose to authorize
+We can then ask for an access token from Google which contains the id for the user to be associated to a record on our databse.
+For all this, we will need to use passport's Google OAuth 2.0 strategy.
+Following the steps in: https://www.passportjs.org/packages/passport-google-oauth20/
+but first we need to go to Google Dev Console and get the OAuth ID and secret
+After all the setup, getting Client ID, secrets, and setting up scopes for email, Google ID and profile, now we're ready for passport */
 
 app.post('/register', (req, res) => {
     // As always, the course is using the callback method, but we'll be using async method which is supported as per docs
@@ -335,9 +484,11 @@ app.post('/login', (req, res) => {
 // Finally we also need a logout route
 app.get('/logout', (req, res) => {
     req.logout((err) => {
-        console.log('err');
+        if (err) {
+            console.log(err);
+        }
+        res.redirect('/');
     });
-    res.redirect('/');
 });
 
 app.listen(port, () => {
@@ -347,3 +498,7 @@ app.listen(port, () => {
 /* It's almost midnight already so I think I should pause this here for now. I will need to create a new folder for this tomorrow
 A waste of storage but then again there was way too much to learn today, and I only began at around 4:30 pm.
 Will have to cover OAuth tomorrow. */
+
+/* Since we need all the packages, I've decided that I will finish the full code here, even though it's a different day */
+
+/* Finally at around 10 am, the deed is done. A single app, spanning more than a day */
