@@ -104,3 +104,8 @@ Day 20:
 Day 21:
 - React: DOM, Components and ES6 Import/Export
 - React Props
+
+Day 22:
+- React Dev Tools, JS functions: map, filter, recude, find, findIndex
+- ES6 features: Arrow function, destructuring
+- Conditional Rendering with React, useState Hook
