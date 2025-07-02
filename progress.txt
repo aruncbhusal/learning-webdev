@@ -109,3 +109,8 @@ Day 22:
 - React Dev Tools, JS functions: map, filter, recude, find, findIndex
 - ES6 features: Arrow function, destructuring
 - Conditional Rendering with React, useState Hook
+
+Day 23:
+- ES6 Features: Array and Object Destructuring, Spreading Operator (...)
+- Event handling with React, Multiple state handling with hooks
+- Component Tree: parent-child control and operation invocation
