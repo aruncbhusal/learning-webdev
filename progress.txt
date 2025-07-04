@@ -114,3 +114,10 @@ Day 23:
 - ES6 Features: Array and Object Destructuring, Spreading Operator (...)
 - Event handling with React, Multiple state handling with hooks
 - Component Tree: parent-child control and operation invocation
+
+Day 24:
+- Web3 and Blockchain
+
+Day 25:
+- Motoko programming, DApps and deploying on a local Internet Computer canister
+- React integration with Motoko backend, useEffect hook
