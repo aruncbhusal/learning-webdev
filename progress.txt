@@ -121,3 +121,6 @@ Day 24:
 Day 25:
 - Motoko programming, DApps and deploying on a local Internet Computer canister
 - React integration with Motoko backend, useEffect hook
+
+Day 26:
+- Authentication with Dfinity ICP, Token economics
