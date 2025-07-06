@@ -124,3 +124,6 @@ Day 25:
 
 Day 26:
 - Authentication with Dfinity ICP, Token economics
+
+Day 27 (Course End):
+- React useForm Hook, Working across ICP Canisters
