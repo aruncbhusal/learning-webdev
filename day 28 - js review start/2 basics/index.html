@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Basics</title>
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/styles/app.css" />
+        <!--We can include a script tag and add js between the script tags, but unless it is short, we should not,
+    because HTML should contain HTML, it would be messy for us to have to manage everything on the same page
+    We can include script here, but it would load before any of the webpage does, so to prevent that, we put it at the end-->
+        <script src="./assets/scripts/vendor.js" defer></script>
+        <script src="./assets/scripts/mine.js" defer></script>
+        <!--We have brought them back up to the head section. We don't want the script to run before the html is loaded,
+    but we also don't want to parse through the whole html for the browser to make a request to the server to download the scripts
+    We can look at how much time it took to make request and get the file in the performance tab by recording when reloading
+    We can use the defer attribute while putting script in head section so that the scripts will only execute once html has loaded
+    This helps us make the request earlier and be ready with the scripts faster without actually executing them
+    
+    We can use another attribute called async which lets the script run right after download is completed
+    It can be used when the code in the script doesn't depend on the html elements
+    But a quirk in async is that whichever script is available first will run first, meaning the order of script tags doesn't matter
+    But in this case, the vendor file will always execute before mine.js
+    
+    In case of script tags with js inside them, we should always put it at the end because there's nothing to download from the server
+    so it can be executed directly at the end with no latency. -->
+    </head>
+    <body>
+        <header>
+            <h1>The Unconventional Calculator</h1>
+        </header>
+
+        <section id="calculator">
+            <input type="number" id="input-number" />
+            <div id="calc-actions">
+                <button type="button" id="btn-add">+</button>
+                <button type="button" id="btn-subtract">-</button>
+                <button type="button" id="btn-multiply">*</button>
+                <button type="button" id="btn-divide">/</button>
+            </div>
+        </section>
+        <section id="results">
+            <h2 id="current-calculation">0</h2>
+            <h2>Result: <span id="current-result">0</span></h2>
+        </section>
+        <!--We need to add the given js file i.e. vendor.js before ours so that it loads before ours and we can use it-->
+        <!-- <script src="./assets/scripts/vendor.js"></script>
+        <script src="./assets/scripts/mine.js"></script> -->
+    </body>
+</html>
