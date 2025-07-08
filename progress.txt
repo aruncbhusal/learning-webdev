@@ -127,3 +127,6 @@ Day 26:
 
 Day 27 (Course End):
 - React useForm Hook, Working across ICP Canisters
+
+Day 28 (Maximilian's Course Start)
+- JS Basics, defer and async attribute in script tag
