@@ -130,3 +130,8 @@ Day 27 (Course End):
 
 Day 28 (Maximilian's Course Start)
 - JS Basics, defer and async attribute in script tag
+
+Day 29, 30:
+- JS Control Structures: if-else-else if, switch-case, ternary operators
+- Loops: for, for...of, for...in, while, do...while
+- Error handling: throw, try...catch...finally
