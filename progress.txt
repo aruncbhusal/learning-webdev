@@ -135,3 +135,9 @@ Day 29, 30:
 - JS Control Structures: if-else-else if, switch-case, ternary operators
 - Loops: for, for...of, for...in, while, do...while
 - Error handling: throw, try...catch...finally
+
+Day 31:
+- ES6 improvements with let and const, strict mode, JS engine Working, call stack, heap, event loop
+- Primitive vs Reference Types, Garbage collection
+- Anonymous functions, Arrow functions, Math.random, default parameters, rest parameters
+- Callback functions, bind() method
