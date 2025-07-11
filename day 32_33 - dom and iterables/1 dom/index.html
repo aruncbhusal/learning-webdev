@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>DOM Interaction</title>
+        <style>
+            .bg-aqua {
+                background-color: aqua;
+            }
+
+            .visible {
+                display: block;
+            }
+
+            .invisible {
+                display: none;
+            }
+        </style>
+        <script src="app.js" defer></script>
+    </head>
+    <body>
+        <!--To demo the JS let's add a heading and an unordered list-->
+        <h1 id="heading">This is the heading</h1>
+        <section class="bg-aqua">
+            <ul>
+                <li class="list-item">First item</li>
+                <li class="list-item">Second <em>item</em></li>
+                <li class="list-item">Third item</li>
+            </ul>
+        </section>
+        <!--Now an input field-->
+        <div><input id="input-field" type="text" value="some value" /></div>
+        <!--And a button to toggle css-->
+        <button>Toggle Visibility</button>
+    </body>
+</html>

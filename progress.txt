@@ -141,3 +141,7 @@ Day 31:
 - Primitive vs Reference Types, Garbage collection
 - Anonymous functions, Arrow functions, Math.random, default parameters, rest parameters
 - Callback functions, bind() method
+
+Day 32, 33:
+- DOM: Nodes, Elements, DOM Traversal, Creating, Inserting and Removing DOM Elements
+- Static NodeList and Live HTMLCollection
