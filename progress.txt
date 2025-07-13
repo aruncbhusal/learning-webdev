@@ -145,3 +145,10 @@ Day 31:
 Day 32, 33:
 - DOM: Nodes, Elements, DOM Traversal, Creating, Inserting and Removing DOM Elements
 - Static NodeList and Live HTMLCollection
+- Creating, inserting and deleting from arrays
+- splice and slice, find, findIndex, indexOf, lastIndexof, map, filter, reduce, sort and reverse
+
+Day 34:
+- Array spreading, destructuring, sets, maps, weakset, weakmap
+- Object spreading, destructuring, Dynamic property accessing
+- 'this' keyword and arrow functions, getter and setter

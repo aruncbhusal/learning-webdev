@@ -216,3 +216,125 @@ const newString = dataArray.join(' ');
 console.log(newString);
 
 // I think I will need to complete this tomorrow as it's already almost midnight now.
+
+// New day
+// Spread operator: ...
+// It is similar to the rest operator, we can take an array and spread its elements into comma separated values
+// It is useful when we need to copy an array
+const newPrices = [...productCosts];
+// If we now add a new entry to the product costs, it is not reflected in the newPrices array
+productCosts.push(45);
+console.log(productCosts, newPrices);
+
+// But if an array contains objects i.e. references of the objects, the references are copied, not the objects
+// So we can instead use map in conjuction with the spread operator to create brand new objects
+const newPeople = [...people.map((person) => ({ name: person.name }))];
+// Now we can change the name of a person in people array and it would not affect the new array
+people[1].name = 'Sheela';
+console.log(people, newPeople);
+
+// Array destructuring
+// What if we want to take all the elements in an array, or some, and store them in some variables/constants
+// We can do so by using the destructuring syntax
+const personArray = ['Jack', 'Rack', 30, 'Houston', { job: 'Plumber' }];
+const [fName, lName, ...otherInfo] = personArray;
+// This takes the personarray and stores the first two elements in the fName and lName constants, and the rest are stored as an array
+console.log(fName, lName, otherInfo);
+
+// Maps and Sets
+// In JS there are three main iterable types: Arrays, Sets and Maps
+// In Arrays and Sets, nested data of any kind can be stored. In Maps, the data are stored as key-value pairs, they may be any kind
+// Each of them have their own special methods along with the common iterable methods
+// Arrays store ordered data, duplication is allowed. Sets don't store ordered data, duplication is not allowed
+// Maps are ordered as well, but duplication of keys is not allowed. Duplication of values is allowed. We access values using keys
+
+// Sets
+// They are used to store data which we don't want to be duplicated, for example ids or usernames
+// In order to create a set, we can use the new Set() syntax, where if we leave parameters empty it creates an empty set
+// Or we can pass an iterable of any type and it creates a set
+const usernames = new Set(['groovypanda', 'magesticoak', 'crazyland']);
+console.log(usernames);
+// The most important method is has() which checks if the set has an item and returns a boolean
+console.log(usernames.has('groovypanda')); // This should return true
+console.log(usernames.has('dragonslayer')); // This should return true
+// We can add or delete items from a set using add and delete methods.
+// The add method doesn't give us any error if the item already exists
+usernames.add('magesticoak');
+// But we can add new ones easily
+usernames.add('slyunicorn');
+console.log(usernames);
+// The delete method doesn't give us any error if the item doesn't exist either
+// But we can use the has() to check if it exists
+if (usernames.has('crazyland')) {
+    usernames.delete('crazyland');
+}
+usernames.delete('fluentkoala');
+
+// We can also get all the items in the set using the entries method which returns an iterable containing arrays with each item twice
+for (const uname of usernames.entries()) {
+    console.log(uname);
+    // We can use indexing to get the actual single value
+}
+// We can also instead use the values() method to get the entries singly
+for (const uname of usernames.values()) {
+    console.log(uname);
+}
+
+// Maps
+// Similar to sets, we can initialize it with en empty parameter list, but to initialize it we use an array of arrays
+// The inner array contains two items: the key and the value. The key and the value can be any type
+// It is useful to associate some data to an existing variable without modifying the variable itself. for example
+let user1 = { username: 'Steve' };
+let user2 = { username: 'Dan' };
+// We can now create a new Map with only user1 as:
+const userMap = new Map([[user1, { lastLoggedIn: 'Tuesday', age: 15 }]]);
+console.log(userMap);
+// In order to get an item from the map, we can use the get method
+console.log(userMap.get(user1));
+// We can see that we can use even an object as a key to get the value stored in it
+// We can also add a new key value pair using set
+userMap.set(user2, { lastLoggedIn: 'Sunday', age: 52 });
+console.log(userMap);
+// Similarly we can use the entries method like before to get all the key value pairs
+for (const [key, value] of userMap.entries()) {
+    // We can also use destructuring
+    console.log(key, value);
+}
+// If we only want the keys, we can get them too using keys()
+for (const key of userMap.keys()) {
+    console.log(key);
+}
+// We also have other methods like delete to remove a single pair, clear to remove everything
+// We can use size property to get the size of the map
+console.log(userMap.size);
+
+// Maps vs Objects: When to use what
+// Objects can only use strings, numbers of symbols as keys but maps can use any daata type as keys and values
+// Creating new objects has better performance than maps, but adding and removing to an object is more intensive
+// Maps are preferred when there are a large number of key value pairs that need to be stored
+
+// Variants of Set and Map: WeakSet and WeakMap
+
+// A WeakSet only takes objects as its elements and supports lot less methods than a full set
+const newWeakSet = new WeakSet();
+newWeakSet.add(user1);
+console.log(newWeakSet);
+// The difference between WeakSet and a normal set is that normal set holds to the referenecs of objects even if the source has abandoned
+// WeakSets are useful when we want to use an object temporarily then have an ability to garbage collect when we remove our references
+user1 = null;
+// Doing this will remove the reference for the object, and now the entry in the weakset is garbage collected by the browser on its terms
+// console.log(newWeakSet);
+// We don't usually control when the garbage collection occurs. In a normal set we would need to delete the entry, but it does it automatically
+
+// WeakMap, similar to WeakSet, takes an object as a key and works on the same principle of garbage collection once unreferenced
+const newWeakMap = new WeakMap();
+newWeakMap.set(user2, 'eaten breakfast');
+console.log(newWeakMap);
+// Now if we set user2 to null, it will at some point garbage collect the reference held by the WeakMap and remove the entry
+// In case of a normal map, we need to do it ourselves like
+userMap.delete(user2);
+// But here we can simply use:
+user2 = null;
+// console.log(newWeakMap);
+
+// This is it for this module, took me lots of time I guess.
