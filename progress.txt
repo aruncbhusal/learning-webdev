@@ -152,3 +152,9 @@ Day 34:
 - Array spreading, destructuring, sets, maps, weakset, weakmap
 - Object spreading, destructuring, Dynamic property accessing
 - 'this' keyword and arrow functions, getter and setter
+
+Day 35:
+- Class, inheritance, constructor
+- Property descriptors, instanceof
+- Constructor Function vs Class, Prototypes, Global object
+- Prototypical inheritance, prototype chaining
