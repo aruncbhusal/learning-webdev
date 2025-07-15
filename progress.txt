@@ -158,3 +158,9 @@ Day 35:
 - Property descriptors, instanceof
 - Constructor Function vs Class, Prototypes, Global object
 - Prototypical inheritance, prototype chaining
+
+Day 36:
+- JavaScript scroll methods: scrollTo, scrollBy, scrollIntoView
+- Node bounding client rect and its properties
+- Templating with <template>, importNode method
+- Browser APIs: timeout, interval, clear, location, history, navigator, date
