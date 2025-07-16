@@ -164,3 +164,7 @@ Day 36:
 - Node bounding client rect and its properties
 - Templating with <template>, importNode method
 - Browser APIs: timeout, interval, clear, location, history, navigator, date
+
+Day 37:
+- Event handling: onclick, event listeners adding and removing
+- Capturing and Bubbling (propagation), preventDefault, stopPropagation
