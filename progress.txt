@@ -168,3 +168,7 @@ Day 36:
 Day 37:
 - Event handling: onclick, event listeners adding and removing
 - Capturing and Bubbling (propagation), preventDefault, stopPropagation
+
+Day 38:
+- Drag and Drop event handling
+- Advanced Function Concepts: Pure functions, side effects, Factory function, closure, IIFE, Recursion
