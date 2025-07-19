@@ -172,3 +172,12 @@ Day 37:
 Day 38:
 - Drag and Drop event handling
 - Advanced Function Concepts: Pure functions, side effects, Factory function, closure, IIFE, Recursion
+
+Day 39:
+- Numbers: floating point limitations, workarounds, limits, BigInt
+- Strings: methods, template literals, template tags
+- Asynchronous JS: callbacks, promises, promise chaining, async/await, promise orchestration with race, all, allSettled
+
+Day 40:
+- HTTP Requests: XMLHttpRequests, fetch API
+- Response types, status codes, error handling, FormData
