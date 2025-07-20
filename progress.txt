@@ -181,3 +181,7 @@ Day 39:
 Day 40:
 - HTTP Requests: XMLHttpRequests, fetch API
 - Response types, status codes, error handling, FormData
+
+Day 41:
+- JS Libraries: lodash, Axios for HTTP Requests, error handling
+- Separating an app into modules
