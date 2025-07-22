@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Project Board</title>
+        <link rel="stylesheet" href="assets/styles/app.css" />
+        <script src="assets/scripts/app.js" defer></script>
+        <!-- We're using webpack here so we're not using modules, but if we were, we'd have type="modules" attribute on script tag
+         But older browsers don't understand it so that script file doesn't work, so we can add a fallback script afterwards
+         This has an attribute called nomodule which is ignored by modern browsers but unrecognized so run by older ones
+         This script can have the fallbacks for the actual modules we want to use -->
+    </head>
+    <body>
+        <button>DO SOMETHING</button>
+        <p>Click the button to copy this text</p>
+        <!-- Some users browse with JS disabled, this can break many aspects of our app and in order to make the users aware we can
+         use a tag called noscript where we can add information which is shown to users who aren't using JS -->
+        <noscript>Please enable JS or it won't work</noscript>
+    </body>
+</html>

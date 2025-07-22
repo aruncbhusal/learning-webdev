@@ -37,10 +37,22 @@
 // For this to work, we need to also install another package, using npm install cross-env
 // We need to also add another key-value pair inside package.json as "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack",
 // When adding more scripts, we need to use cross-env NODE_OPTIONS=--openssl-legacy-provider before the rest of the script
+// We can read webpack docs at https://webpack.js.org/
 
-import { ProjectList } from './App/ProjectList.js';
+// We need to also create webpack.config.js and include Node imports, for which we need to use module.exports = { ... }
+
+// Now we also have a new way to import a third party library like Lodash. We can look at the docs which suggests we use
+// npm i --save lodash
+// i stands for install and using --save we save it as a dependency not devDependency so we can use it in our code
+// To use it we can simply import it as _ and use it , and we don't need to import the entire module, we can just import the arrays part
+// If we don't give path but simply the name in the from string, it will look for it inside the node_modules folder
+import * as _ from 'lodash/array';
+
+import { ProjectList } from './App/ProjectList';
 
 globalThis.DEFAULT_VALUE = 'MAX';
+
+console.log(_.difference([5, 6, 8, 4, 3], [3, 4, 5]));
 
 class App {
     static init() {

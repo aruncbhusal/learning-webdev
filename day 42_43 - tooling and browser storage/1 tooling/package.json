@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server",
+    "build:prod": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --config webpack.config.prod.js"
   },
   "keywords": [],
   "author": "Arun Chandra Bhusal",
@@ -12,7 +14,15 @@
   "description": "Tooling lesson",
   "devDependencies": {
     "@eslint/js": "^9.31.0",
+    "clean-webpack-plugin": "^4.0.0",
     "eslint": "^9.31.0",
-    "globals": "^16.3.0"
+    "globals": "^16.3.0",
+    "webpack-dev-server": "^4.15.2"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "lodash": "^4.17.21",
+    "webpack": "4.47.0",
+    "webpack-cli": "^4.10.0"
   }
 }

@@ -185,3 +185,10 @@ Day 40:
 Day 41:
 - JS Libraries: lodash, Axios for HTTP Requests, error handling
 - Separating an app into modules
+
+Day 42, 43:
+- Tooling in JS: ESLint, rules while linting
+- Webpack for code bundling and webpack-dev-server for auto reload, plugins
+- Importing a third party library as dependency
+- Browser Storage: localStorage, sessionStorage, cookies, IndexedDB
+- Browser Support: defining support requirements, transpiling with babel, polyfills
