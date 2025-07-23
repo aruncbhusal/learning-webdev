@@ -192,3 +192,6 @@ Day 42, 43:
 - Importing a third party library as dependency
 - Browser Storage: localStorage, sessionStorage, cookies, IndexedDB
 - Browser Support: defining support requirements, transpiling with babel, polyfills
+
+Day 44:
+- Project: Share My Place App
