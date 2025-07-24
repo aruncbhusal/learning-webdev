@@ -195,3 +195,7 @@ Day 42, 43:
 
 Day 44:
 - Project: Share My Place App
+
+Day 45:
+- React Frameworks, distinction from Library, Analyzing React code and JSX
+- Meta Programming: Symbol, Iterator, Generator, Reflect API, Proxy API
