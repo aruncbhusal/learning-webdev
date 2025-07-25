@@ -199,3 +199,7 @@ Day 44:
 Day 45:
 - React Frameworks, distinction from Library, Analyzing React code and JSX
 - Meta Programming: Symbol, Iterator, Generator, Reflect API, Proxy API
+
+Day 46:
+- NodeJS, API, modules, file system operations: read, write
+- http module for creating a server. ExpressJS for templating with EJS
