@@ -6,6 +6,7 @@
 // Runtime Performance: It deals with how smooth the application feels, whether the animations have any lags, or are there any memory leaks
 // Memory leaks make the app lag more as time goes on
 // These are affected by not only JS but also HTML and CSS, because their sizes, complexity in CSS selectors, etc also make a difference
+// https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency
 
 // When it comes to JS only, startup time is mostly related to browser side JS and how optimized the web server and delivery of content is
 // The response time may be related to server side as well, since we might make API requests to the backend which might take a long time
@@ -14,14 +15,21 @@
 // There are different layers to optimizing the JS and the web application in general:
 // Startup Time:
 // 1. Bundle/Script size: Larger files take longer to download, nothing new. People may be accessing from places with slow internet connection
+// We can also help with this with compression of these files into a single smaller one. Read https://github.com/expressjs/compression
 // 2. Http roundtrips: When we have to download multiple files, we have to make multiple requests, each with their own base cost for the request
 // These times add up and make the app interactive slower than it should, so we use webpack and bundle our code, and minify it as well
+// Browser helps with this with built in caching https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
+// Read about caching: https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching
+// And more: https://wp-rocket.me/blog/different-types-of-caching/
 // Runtime Performance:
 // 1. Optimize Code Execution: We should only do what we need to, avoiding unnecessary DOM operations, which are costly because of Browser API
 // When we have to change a part of the DOM, we should aim to re-render as little part of the DOM as possible
 // 2. Avoid Memory Leaks: Some memory leaks are useful, but in many cases, we must avoid them in order to avoid sluggish app or even crashing
 // 3. Find Code Alternatives: When something is used very often, we might benefit from using a more performant technique
 // 4. Micro-optimizations: Some data structures offer better performance than others depending on the use case, we can pick and choose
+
+// HTTP2 : It brought an ability for the server to push the required assets/files to the client without client requesting them
+// https://developers.google.com/web/fundamentals/performance/http2
 
 // Measuring and Auditing Performance
 // 1. Check number of roundtrips and script/bundle size, set size budgets

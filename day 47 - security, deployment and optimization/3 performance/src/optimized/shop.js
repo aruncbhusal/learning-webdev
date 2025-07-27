@@ -1,11 +1,11 @@
 // In this file we can first handle the addProduct in house where we then import from the product management file
 
-import { initProducts } from './product-management';
 // We need to import the products and the renderProducts function in order to migrate initProducts here
 import { products } from './products.js';
 import { renderProducts } from './rendering.js';
 
 function addProduct(event) {
+    event.preventDefault();
     import('./product-management.js').then((mod) => {
         mod.addProduct(event);
     });
