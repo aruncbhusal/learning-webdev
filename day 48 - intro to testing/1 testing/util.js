@@ -7,7 +7,9 @@
 // In this case we use a Test Runner + Assertion Library called Jest, which we can find at https://jestjs.io/
 // We can read the docs to install it, using npm install --save-dev jest
 
-exports.generateText = (name, age) => {
+// This function and the validateInput function were exported here directly but since we need them here
+// We need to assign to normal constatnts, because they become a part of the exports object if we do exports.generateText
+const generateText = (name, age) => {
     // Returns output text
     return `${name} (${age} years old)`;
     // This function is a ripe fruit for unit testing here, since it is a single function that gives out an output
@@ -22,7 +24,7 @@ exports.createElement = (type, text, className) => {
     return newElement;
 };
 
-exports.validateInput = (text, notEmpty, isNumber) => {
+const validateInput = (text, notEmpty, isNumber) => {
     // Validate user input with two pre-defined rules
     if (!text) {
         return false;
@@ -35,3 +37,15 @@ exports.validateInput = (text, notEmpty, isNumber) => {
     }
     return true;
 };
+
+exports.validateAndGenerate = (name, age) => {
+    if (!validateInput(name, true, false) || !validateInput(age, false, true)) {
+        return false;
+    }
+
+    const outputText = generateText(name, age);
+    return outputText;
+};
+
+exports.generateText = generateText;
+exports.validateInput = validateInput;

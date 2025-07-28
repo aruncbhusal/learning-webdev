@@ -15,7 +15,7 @@
 // As we include more and more parts of the code, complexity increases further
 // And as complexity increases, we should also write less test codes. Unit testing should have highest number of testings
 
-const { generateText, createElement, validateInput } = require('./util');
+const { createElement, validateAndGenerate } = require('./util');
 
 const initApp = () => {
     // Initializes the app, registers the button click listener
@@ -29,18 +29,32 @@ const addUser = () => {
     const newUserNameInput = document.querySelector('input#name');
     const newUserAgeInput = document.querySelector('input#age');
 
-    if (
-        !validateInput(newUserNameInput.value, true, false) ||
-        !validateInput(newUserAgeInput.value, false, true)
-    ) {
+    // We could do integration testing here but since this deals with the DOM, we can take some code from here
+    // And create a new function in utils which will be used here, and it uses other functions like validate and generate
+
+    // if (
+    //     !validateInput(newUserNameInput.value, true, false) ||
+    //     !validateInput(newUserAgeInput.value, false, true)
+    // ) {
+    //     return;
+    // }
+
+    // const outputText = generateText(
+    //   newUserNameInput.value,
+    //   newUserAgeInput.value
+    // );
+
+    // We can replace the above code with just a function call that returns false if no output text and output text if yes
+    const outputText = validateAndGenerate(
+        newUserNameInput.value,
+        newUserAgeInput.value
+    );
+
+    if (!outputText) {
         return;
     }
 
     const userList = document.querySelector('.user-list');
-    const outputText = generateText(
-        newUserNameInput.value,
-        newUserAgeInput.value
-    );
     const element = createElement('li', outputText, 'user-item');
     userList.appendChild(element);
 };

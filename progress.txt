@@ -1,4 +1,6 @@
 (2081/10/10)
+Note: The 'day' in this file may not reflect accurately on the daily folders because some folders have two days of commit history
+
 Day 0:
 - Created the repository
 - Edited readme. That's it. Not much done on the first day as I'm tired and sleep deprived. Hopefully with a good night's sleep I will be able to make some actual progress tomorrow.
@@ -203,3 +205,17 @@ Day 45:
 Day 46:
 - NodeJS, API, modules, file system operations: read, write
 - http module for creating a server. ExpressJS for templating with EJS
+
+Day 47:
+- Security: attack patterns: XSS, CSRF, CORS, preventions
+- Deploying to Firebase (static) and Heroku (dynamic)
+- Performance: Minimizing startup time and runtime performance gaps
+
+Day 48:
+- Chrome Devtools and snapshots for comparison and memory leak avoidance
+- Identifying low performing code and replacing/modying
+- Introduction to testing: Types, setting up Unit testing with JestJS
+
+Day 49:
+- Asynchronous testing, JS Mocks
+- Programing paradigms: procedural

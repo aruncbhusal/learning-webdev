@@ -19,13 +19,15 @@
     "e2e",
     "tests"
   ],
-  "author": "Arun Chandra Bhusal",
+  "author": "Maximilian Schwarzmüller/ Academind GmbH",
   "license": "ISC",
   "devDependencies": {
     "cross-env": "^10.0.0",
-    "jest": "^30.0.5",
-    "puppeteer": "^24.15.0",
+    "jest": "^23.6.0",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
   }
 }
