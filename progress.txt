@@ -219,3 +219,7 @@ Day 48:
 Day 49:
 - Asynchronous testing, JS Mocks
 - Programing paradigms: procedural
+
+Day 50:
+- Programming paradigms: functional, object oriented
+- Data Structures and Algorithms: Minimum finding app, Big-O notation
