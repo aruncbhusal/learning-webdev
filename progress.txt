@@ -227,3 +227,7 @@ Day 50:
 Day 51:
 - Data structures, comparing time complexity
 - Introduction to TypeScript: type inference, typecasting, interfaces, type alias, enum
+
+Day 52:
+- Configuring typescript properties, generic types
+- Web components: what, why, creating web components, styling

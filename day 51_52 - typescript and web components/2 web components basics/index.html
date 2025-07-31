@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Web Components</title>
+        <script src="modal.js"></script>
+    </head>
+    <body>
+        <!--We have a custom component called uc-modal in modal.js and we can use it here
+      In order to display the modal we need to use an attribute defined called 'opened'-->
+        <uc-modal>
+            <!--An attribute called slot is defined for placement of the elements inside the component-->
+            <h1 slot="title">The Title</h1>
+            <p>Modal body</p>
+        </uc-modal>
+        <script>
+            // We can also add our own script that accesses this uc-modal component just like any html element
+            // And use the method defined in modal.js to open it
+            const modal = document.querySelector('uc-modal');
+            setTimeout(() => {
+                modal.open();
+            }, 3000);
+            // We can't use setTimeout(modal.open, 3000) because it executes the reference with 'this' lost inside the method
+        </script>
+    </body>
+</html>

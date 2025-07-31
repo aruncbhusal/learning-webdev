@@ -59,7 +59,8 @@ const num1El = document.getElementById('num1') as HTMLInputElement;
 const num2El = <HTMLInputElement>document.getElementById('num2');
 // In order to cast, we can also use the angle brackets with element type inside
 
-const submitBtn = document.getElementById('submit-btn');
+const submitBtn = document.getElementById('submit-btn')!;
+// He mentioned the null value while explaining tsconfig, for which we can use the exclamation mark after the expression to ignore if null
 
 // We can add interfaces for type security and to fix what should be used while developing a class
 // Say we want to ensure any class we create for user/something else that is relevant should contain a name property and print method
@@ -113,10 +114,18 @@ interface Result {
   print(): void
 }
 
+// Generic Types:
+// We can also use generic types for data types that work with other data types
+// One such example is the Array type, normally we can use Array<any> but we can also use any other type to dictate the type of items
+// Promise also uses generic type since we're returning a function that might be anything
+
 // const resultArray: { res: number, print: () => void }[] = [];
 // This can be written by making use of the interface above
-const resultArray: Result[] = [];
+// const resultArray: Result[] = [];
 // By using [] after the object type definiton, we can indicate that it is an array containing that type of object
+// This is again a syntactic sugar for using generic type
+const resultArray:Array<Result> = []
+
 // We can also dictate the type of data our array needs to contain this way, and type inference can also do it for us if an element is given
 const names = ['Gabriel']; // Will be inferred string type array
 
@@ -146,7 +155,7 @@ function printOne(item: string | number, method: OutputType) {
 }
 
 // Now we can add an event listener
-submitBtn?.addEventListener('click', () => {
+submitBtn.addEventListener('click', () => {
   // Note: one thing the course doesn't cover is that during initialization, these values may also be null if not found
   // So for such cases we need to use ? at the end to indicate that we only use them if they are available as the primary type
 
@@ -185,3 +194,19 @@ submitBtn?.addEventListener('click', () => {
   printOne(result, OutputType.ALERT);
 })
 // I think I'll stop this here for now and continue tomorrow for the last part hopefully
+
+// We can create a generic function as well
+function logAndReturn<T>(value: T) {
+  // By using any user defined type, T is just a convention, we can make sure we're working with the right type of data
+  // In this case, the function defines a generic type T, which the value parameter must match
+  console.log(value);
+  return value;
+}
+
+// Since we've defined a generic function, we should play by the rules we have established there, for a generic type, we must specify ours
+const something = logAndReturn<string>('Lunes Martes Miercoles Jueves Viernes Sabado Domingo');
+// Here the specified type and the type of the parameter are the same, so since they are both strings I can use string operations here
+// Else I wouldn't be able to use methods like spilit, etc
+
+// We may have changes in our file which we need to recompile, but we can instead use -w flag in the compilation command to do so automatically
+// Simiilarly, we can use 'tsc --init' to generate a tsconfig.json file where we can turn on/off different TypeScript features, like strict mode
