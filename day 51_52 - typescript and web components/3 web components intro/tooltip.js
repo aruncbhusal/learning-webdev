@@ -22,12 +22,88 @@ class Tooltip extends HTMLElement {
         // Since we want tool tip component to be private, we can simply define it here and use it inside another method
         this._toolTipText = 'Test text';
         // We can't access the attribute here because we can't work with the DOM inside the constructor so we need to do it in connectedCallback()
+
+        // Currently the custom element we added is a part of the normal or "light" DOM, which is just us defining a component and giving it a name
+        // But the component fully appears as a container with all the span and div we have inside appearing as a part of normal DOM tree
+        // In this mode, the CSS and others in the normal DOM will affect elements inside this component too, but we can avoid that
+        // By creating a shadow DOM and attaching elements to that shadow, we can have a DOM separate from normal DOM, as a part of this component
+        this.attachShadow({ mode: 'open' });
+        // We can also use the closed mode which closes this shadow DOM from outside accessing, so we can only access from this class that way
+
+        // We can access the shadow root here, we can also access normal DOM, so let's get the template here and append it first
+        // this.shadowRoot.appendChild(
+        //     document.getElementById('tooltip-template').content.cloneNode(true)
+        // );
+        // With templates we can take advantage of something called 'slot' where any text node we might have is displayed
+        // If we leave it empty, it will show whatever is there, but if we have some text inside slot, it will use it as the default value
+
+        // But even better than having a template in the HTML, we can create a template here
+        // By using innerHTML for the shadowRoot we can put the content of template into the root, to be rendered along with the element
+        // Unlike appendChild it doesn't try to render immediately but only maps the value to the node so we are able to do so
+
+        // In fact we can also add styles to the shadow DOM using the style tag, and this won't affect the DOM outside of this component
+        // So we can comment out the styling in the tooltip, and use it here instead
+        this.shadowRoot.innerHTML = `
+            <style>
+            div {
+                background-color: black;
+                color: white;
+                position: absolute;
+                z-index: 10;
+            }
+
+            .highlight {
+            background-color: black;
+            }
+
+            ::slotted(.highlight) {
+                border-bottom-color: red;
+                border-bottom-style: solid;
+                border-bottom-width: 2px;
+            }
+
+            .info {
+                background-color: blue;
+                color: white;
+                border-radius: 50%;
+                padding: 0.1rem 0.5rem;
+            }
+
+            :host(.important) {
+                background-color: #ccc;
+            }
+
+            :hostContext(p) {
+                font-weight: bold;
+            }
+            </style>
+            <slot>Default slot value</slot>
+            <span class="info">?</span>
+        `;
+        // When we do this, we can see in the DOM tree that the text node we have in the HTML is inside this tag, but it doesn't move into shadow DOM
+        // It is a part of the normal DOM, and stays that way unless we get it here somehow. We can place it with slots but it doesn't exist inside
+        // And this applies for any type of DOM node, not only text. We can wrap the text inside a span to see it
+        // The implication of this is that when we apply styling to the light DOM, it applies to that node as well, but if we add here, it won't
+
+        // But we can use a method to style any node slotted in the shadow DOM directly. So we can't select a descendent but can use single word selector
+        // But the CSS in the light DOM will override the one in the shadow DOM
+
+        // We can also style the elements inside our shadow DOM with normal CSS
+        // And we can style the overall custom element by selecting the tag in the light DOM as well
+        // Alongside that style, we can also style it from inside the shadow DOM using the :host selectot, though can be overridden
+        // We can also choose whether to style it via the shadow DOM styling using a class that may be present on the custom component
+        // We can make the conditional choice using :host as a function since :host.some-class doesn't work
+
+        // We can also add another condition for the context where the component is located (i.e. where is it)
+        // It is also a function selector called :hostContext which takes a tagname, which can be used readily
     }
 
     // Let's work with our DOM and add an element into our component
     connectedCallback() {
-        const tooltipIcon = document.createElement('span');
-        tooltipIcon.textContent = '  (?)';
+        // const tooltipIcon = document.createElement('span');
+        // tooltipIcon.textContent = '  (?)';
+        // We can simply get the tooltip icon with a query now
+        const tooltipIcon = this.shadowRoot.querySelector('span');
 
         // Now to set the tooltip text we can check if an attribute is given, then if given we can use its value
         if (this.hasAttribute('text')) {
@@ -47,7 +123,11 @@ class Tooltip extends HTMLElement {
             'mouseleave',
             this._hideToolTip.bind(this)
         );
-        this.appendChild(tooltipIcon);
+        // this.appendChild(tooltipIcon);
+        // In order to add to the shadow DOM, we need to append it to the shadowRoot which is created when we attach a shadow to the DOM
+        // this.shadowRoot.appendChild(tooltipIcon);
+        // But right after doing so, the text node inside the shadow root is no longer displayed
+        // In order to not have normal text inside the shadow node, we can also use templates instead of creating the element here
     }
 
     // We can create the show tool tip method here which should only be accessible in the current class but since private properties
@@ -63,13 +143,15 @@ class Tooltip extends HTMLElement {
         this._toolTipComponent.textContent = this._toolTipText;
 
         // We can also add style to our component, for which we simply use the normal JS style object
-        this._toolTipComponent.style.backgroundColor = 'black';
-        this._toolTipComponent.style.color = 'white';
+        // this._toolTipComponent.style.backgroundColor = 'black';
+        // this._toolTipComponent.style.color = 'white';
         // We also want this component to not disrupt the flow of elements so we want it to be positioned absolutely
         // For that we want the parent element i.e. this component to have a relative position which we can set while appending it to the DOM
-        this._toolTipComponent.style.position = 'absolute';
+        // this._toolTipComponent.style.position = 'absolute';
+        // this._toolTipComponent.style.zIndex = 10;
 
-        this.appendChild(this._toolTipComponent);
+        // this.appendChild(this._toolTipComponent);
+        this.shadowRoot.appendChild(this._toolTipComponent);
     }
 
     _hideToolTip() {
@@ -85,3 +167,4 @@ customElements.define('acb-tooltip', Tooltip);
 // Now we can add this to the HTML file to be able to use it
 
 // This thing is going to take me one more day so it will go upto day 53 but I won't edit folder name else it will break past commit
+// Yet again feeling sleepy so maybe going upto 54 but tomorrow I'll also update the readme so I'll be done by tomorrow

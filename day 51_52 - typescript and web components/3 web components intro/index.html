@@ -4,13 +4,39 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Web Components</title>
-        <script src="tooltip.js"></script>
+        <style>
+            div {
+                background-color: yellowgreen;
+            }
+
+            .highlight {
+                background-color: rgb(247, 247, 113);
+                border-bottom-width: 1px;
+            }
+
+            acb-tooltip {
+                margin: 30px 0;
+                border-bottom: 2px solid red;
+            }
+        </style>
+        <script src="tooltip.js" defer></script>
+        <script src="confirm-link.js" defer></script>
     </head>
     <body>
+        <!-- <template id="tooltip-template">
+            <slot>Default slot value</slot><span> (?)</span>
+        </template> -->
         <p>
-            <acb-tooltip text="A set of standards.">Web Components</acb-tooltip>
+            <acb-tooltip text="A set of standards."
+                ><span class="highlight">Web Components</span></acb-tooltip
+            >
             are awesome.
         </p>
-        <acb-tooltip>Some other info</acb-tooltip>
+        <p>
+            <acb-tooltip class="important">Some other info</acb-tooltip>
+        </p>
+        <acb-tooltip></acb-tooltip>
+        <div>Doesn't get affected by shadow CSS</div>
+        <a is="acb-confirm-link" href="https://google.com">Google</a>
     </body>
 </html>

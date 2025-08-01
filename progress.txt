@@ -231,3 +231,7 @@ Day 51:
 Day 52:
 - Configuring typescript properties, generic types
 - Web components: what, why, creating web components, styling
+
+Day 53:
+- Shadow DOM, templates, slots
+- Built-in HTML element DOM extension
