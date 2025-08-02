@@ -18,7 +18,9 @@ class Tooltip extends HTMLElement {
         // We also have disconnectedCallback for when the node is destroyed, for example, so that we can do cleanup
         // Further, there's a attributeChangedCallback which allows us to update data and the DOM in response to change in attributes
 
-        this._toolTipComponent;
+        // this._toolTipComponent;
+        this._toolTipIcon;
+        this._toolTipVisible = false;
         // Since we want tool tip component to be private, we can simply define it here and use it inside another method
         this._toolTipText = 'Test text';
         // We can't access the attribute here because we can't work with the DOM inside the constructor so we need to do it in connectedCallback()
@@ -45,11 +47,20 @@ class Tooltip extends HTMLElement {
         // So we can comment out the styling in the tooltip, and use it here instead
         this.shadowRoot.innerHTML = `
             <style>
+            :host{
+                position: relative;
+            }
             div {
+                font-weight: normal;
                 background-color: black;
                 color: white;
                 position: absolute;
+                top: 1.5rem;
+                left: 0.75rem;
                 z-index: 10;
+                padding: 0.15rem;
+                border-radius: 3px;
+                box-shadow: 1px 1px 6px rgba(0,0,0,0.26);
             }
 
             .highlight {
@@ -60,6 +71,8 @@ class Tooltip extends HTMLElement {
                 border-bottom-color: red;
                 border-bottom-style: solid;
                 border-bottom-width: 2px;
+                background-color: var(--color-primary, #ccc);
+                padding: 0.15rem;
             }
 
             .info {
@@ -96,6 +109,12 @@ class Tooltip extends HTMLElement {
 
         // We can also add another condition for the context where the component is located (i.e. where is it)
         // It is also a function selector called :hostContext which takes a tagname, which can be used readily
+
+        // Since we want to maintain uniformity in styling, we can also set CSS variables that store certain values like color hex
+        // We can set a primary color as a value by putting it inside ':root' selector or selecting 'html' and inside the CSS rule
+        // We can place a property that begins with -- and then to use it, we can use var() where we can use the name, and we can give a fallback
+        // value by separating with a comma
+        // We can learn more about it here: https://developer.mozilla.org/en-US/docs/Web/CSS/--*
     }
 
     // Let's work with our DOM and add an element into our component
@@ -103,23 +122,23 @@ class Tooltip extends HTMLElement {
         // const tooltipIcon = document.createElement('span');
         // tooltipIcon.textContent = '  (?)';
         // We can simply get the tooltip icon with a query now
-        const tooltipIcon = this.shadowRoot.querySelector('span');
+        this._tooltipIcon = this.shadowRoot.querySelector('span');
 
         // Now to set the tooltip text we can check if an attribute is given, then if given we can use its value
         if (this.hasAttribute('text')) {
             this._toolTipText = this.getAttribute('text');
         }
 
-        this.style.position = 'relative';
+        // this.style.position = 'relative';
 
         // We can add event listener to this tooltip icon so that the tooltip appears when we hover over it
-        tooltipIcon.addEventListener(
+        this._tooltipIcon.addEventListener(
             'mouseenter',
             this._showToolTip.bind(this)
         );
         // We call a private* method to handle the event, and we need to bind this because it is called by the element
         // Similarly we also need a mouseleave event handler
-        tooltipIcon.addEventListener(
+        this._tooltipIcon.addEventListener(
             'mouseleave',
             this._hideToolTip.bind(this)
         );
@@ -130,17 +149,69 @@ class Tooltip extends HTMLElement {
         // In order to not have normal text inside the shadow node, we can also use templates instead of creating the element here
     }
 
+    attributeChangedCallback(attribute, oldValue, newValue) {
+        // We were only reading the value from the text attribute to set the content of the tooltip while we were creating the component
+        // But we also need to watch for changes, for that we need to add this function to the class which is passed three arguments
+        // But before we can use it, we also need to watch for the attributes, since we don't want to be watching everything all the time
+        // For that we can create a new static function with a get keyword and return an array of strings with attribute names
+        // console.log(attribute, oldValue, newValue);
+
+        // When a change is detected, we need to first check if the new value is still the same, in which case we don't waste performance
+        if (newValue === oldValue) {
+            return;
+        }
+        // But if it has changed, we need to know which attribute it is, since we may have multiple attributes being watched at the same time
+        if (attribute === 'text') {
+            this._toolTipText = newValue;
+        }
+    }
+
+    static get observedAttributes() {
+        return ['text'];
+    }
+
+    disconnectedCallback() {
+        // When the element is removed from the DOM, it may have certain artifacts left, which may need to be cleaned up
+        // In order to detect when the component is removed, we can have a disconnectedCallback function
+        // These events may be some ongoing HTTP request, event listeners,etc
+        // In our case, we have bound 'this' to our event listener callback passed, so we can't remove them straightforward
+        // But since Browser auto garbage collects event listeners from a deleted element, it is redundant
+        // But if binding was not done, we could use this:
+        this._tooltipIcon.removeEventListener('mouseenter', this._showToolTip);
+        this._tooltipIcon.removeEventListener('mouseleave', this._hideToolTip);
+        // Just to be clear: This doesn't do anything for this particular case because of 'this' binding during adding of the listener
+    }
+
+    _render() {
+        // When we have more complex components (this one is pretty simple), we may want to centralize the logic for rendering
+        // That way we can have a better separation of logical concerns in the different methods, so we can just call this function
+        // inside show and hide tooltip and we can change a variable to show or hide based on the method that is calling this method
+        // We can have a tooltipVisible boolean that is true when _showToolTip is called, and false when _hideToolTip
+        // We also don't need to have a class scoped toolTipComponent variable, we can simply have a local one
+        // But that variable needs access to the tooltip component if already present, so that we can remove it
+        let tooltipComponent = this.shadowRoot.querySelector('div');
+        if (this._toolTipVisible) {
+            tooltipComponent = document.createElement('div');
+            tooltipComponent.textContent = this._toolTipText;
+            this.shadowRoot.appendChild(tooltipComponent);
+        } else {
+            if (tooltipComponent) {
+                tooltipComponent.remove();
+            }
+        }
+    }
+
     // We can create the show tool tip method here which should only be accessible in the current class but since private properties
     // are not supported in older browsers, we use pseudo-private notation of _ before name to INDICATE that it is private
     _showToolTip() {
         // We want to create a tooltip component here but since we also need to remove that same component later,
         // we miight need to create a new property for this class that holds the tooltip component
-        this._toolTipComponent = document.createElement('div');
+        // this._toolTipComponent = document.createElement('div');
         // this._toolTipComponent.textContent = 'This is a tooltip';
         // But we don't want generic fixed tooltip text, we might want to be able to set it from the outside
         // For that we can use a property in this class, which we can set as a dummy value, and if we pass an attribute, we can update it
         // Then we can show the property in the text content of the component
-        this._toolTipComponent.textContent = this._toolTipText;
+        // this._toolTipComponent.textContent = this._toolTipText;
 
         // We can also add style to our component, for which we simply use the normal JS style object
         // this._toolTipComponent.style.backgroundColor = 'black';
@@ -151,11 +222,17 @@ class Tooltip extends HTMLElement {
         // this._toolTipComponent.style.zIndex = 10;
 
         // this.appendChild(this._toolTipComponent);
-        this.shadowRoot.appendChild(this._toolTipComponent);
+        // this.shadowRoot.appendChild(this._toolTipComponent);
+
+        // For usage with _render
+        this._toolTipVisible = true;
+        this._render();
     }
 
     _hideToolTip() {
-        this._toolTipComponent.remove();
+        // this._toolTipComponent.remove();
+        this._toolTipVisible = false;
+        this._render();
     }
 }
 

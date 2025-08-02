@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 2rem;
+                font-family: sans-serif;
+            }
+        </style>
+        <title>Modal Component</title>
+        <script src="./modal.js"></script>
+    </head>
+    <body>
+        <acb-modal
+            ><h1 slot="title">Please Confirm Transaction</h1>
+            <p>
+                By clicking this button you agree to sell your soul to the
+                overlord.
+            </p></acb-modal
+        >
+        <p>Please confirm your choice</p>
+        <button>Click Me</button>
+        <script>
+            // We want to be able to show the modal when we click the button and close it otherwise
+            // we can do it with various methods, one of the ways is to set the opacity to 0 initially
+            // Let's select the button and modal element here
+            // A nice thing about components like this is that when we select a button, only elements inside lgiht DOM are considered
+            const confirmButton = document.querySelector('button');
+            const modal = document.querySelector('acb-modal');
+
+            // Since we have a custom element, we may also want to handle some custom events
+            // We could have a confirm and a cancel event which is triggered internally from the shadow DOM and can be handled here
+            modal.addEventListener('confirm', () => {
+                console.log('confirming....');
+            });
+            modal.addEventListener('cancel', () => {
+                console.log('canceling....');
+            });
+
+            confirmButton.addEventListener('click', () => {
+                // modal.setAttribute('opened', '');
+                // By adding this attribute, we can use the attributeChangedCallback in the component
+                // We can also use an alternative method, since the modal object here is just the custom element we have created
+                // This means that we can access any methods we define inside the class here as well
+                // We can define a open() method which would add the attribute itself
+
+                if (!modal.isOpen) {
+                    modal.open();
+                }
+                // This way we can use public attributes and methods from the component as well
+            });
+        </script>
+    </body>
+</html>
